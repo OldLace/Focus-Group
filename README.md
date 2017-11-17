@@ -56,7 +56,7 @@ _User_
 
 <div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg?raw=true)</div>
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-userpage.jpg?raw=true)</div>
+![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-userpage.jpg)
 
 <div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-searchpage.jpg?raw=true)</div>
 
