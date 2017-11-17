@@ -72,10 +72,24 @@ _User_
 
 ## Phases of completion:
 
-#### Phase 1
-
-SQL tables and Express backend
-
+#### Phase 1 
+  -Build out backend file structure
+  -Build out frontend file structure
+  -Create DB migrations and seed files
+#### Phase 2
+  -Fill out backend skeleton code 
+  -Fill out frontend skeleton code
+  -Copypasta auth
+#### Phase 3
+  -Controller + models
+  -Frontend auth and stateless components
+  -app.js and server.js
+ #### Phase 4
+  -Forms and styling
+  -Controller + models is probably a multi-day task
+  -app.js + server.js is probably a multi-day task
+#### Phase 5
+  -TBD: bonuses (corporate creating campaign/focusgroup content, data visualizations, adding a ‘seed’ task for users to complete)
 </article>
 
 <article>
@@ -83,7 +97,7 @@ SQL tables and Express backend
 ## Style guide:
 
 </article>
-
+https://identitydesigned.com/bosphorus/
 <article>
 
 ## Links and resources:
