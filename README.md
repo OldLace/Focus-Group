@@ -52,8 +52,7 @@ _User_
 
 <article style="text-align: center">
 
-## Wireframes:   ![](images/table 1-1.png?raw=true)
-
+## Wireframes: 
 
 <div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg?raw=true)</div>
 
