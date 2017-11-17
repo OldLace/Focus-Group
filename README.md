@@ -52,19 +52,20 @@ _User_
 
 <article style="text-align: center">
 
-## Wireframes:
+## Wireframes:   ![](images/table 1-1.png?raw=true)
 
-<div class="img-box">![Login Page](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg)</div>
 
-<div class="img-box">![User Data Page](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-userpage.jpg)</div>
+<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg?raw=true)</div>
 
-<div class="img-box">![User Search Page](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-searchpage.jpg)</div>
+<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-userpage.jpg?raw=true)</div>
 
-<div class="img-box">![](https://github.com/dylonion/Movies-app/blob/master/new-userpage-surveys.jpg)</div>
+<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-searchpage.jpg?raw=true)</div>
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-viewsurveypage.jpg)</div>
+<div class="img-box">![](https://github.com/dylonion/Movies-app/blob/master/new-userpage-surveys.jpg?raw=true)</div>
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/corporate-page.jpg)</div>
+<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-viewsurveypage.jpg?raw=true)</div>
+
+<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/corporate-page.jpg?raw=true)</div>
 
 </article>
 
