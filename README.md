@@ -54,17 +54,17 @@ _User_
 
 ## Wireframes: 
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg?raw=true)</div>
+![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroup-mainpage-login-consolidated.jpg)
 
 ![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-userpage.jpg)
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-searchpage.jpg?raw=true)</div>
+![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-searchpage.jpg)
 
-<div class="img-box">![](https://github.com/dylonion/Movies-app/blob/master/new-userpage-surveys.jpg?raw=true)</div>
+![](https://github.com/dylonion/Movies-app/blob/master/new-userpage-surveys.jpg)
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-viewsurveypage.jpg?raw=true)</div>
+![](https://raw.githubusercontent.com/dylonion/Movies-app/master/focusgroups-viewsurveypage.jpg)
 
-<div class="img-box">![](https://raw.githubusercontent.com/dylonion/Movies-app/master/corporate-page.jpg?raw=true)</div>
+![](https://raw.githubusercontent.com/dylonion/Movies-app/master/corporate-page.jpg)
 
 </article>
 
