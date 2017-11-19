@@ -3,9 +3,9 @@ CREATE TABLE IF NOT EXISTS users (
   firstname VARCHAR(255),
   lastname VARCHAR(255),
   username VARCHAR(255) UNIQUE NOT NULL,
-  password_digest TEXT NOT NULL,
-  email VARCHAR(255),
-  account_type BOOL
+--  password_digest TEXT NOT NULL,
+  email VARCHAR(255)
+--  account_type BOOL
 );
 
 CREATE TABLE IF NOT EXISTS user_profiles (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS biz_profiles (
  CREATE TABLE IF NOT EXISTS campaigns (
   id SERIAL PRIMARY KEY,
   biz_id references biz_profiles(id),
-  name TEXT
+  c_name TEXT
  );
 
 
