@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS user_profiles (
   street_address VARCHAR(255),
   city VARCHAR(255),
   state VARCHAR(255),
-  zip INT
+  zip INT,
+  user_id references users(id)
 );
 
 CREATE TABLE IF NOT EXISTS biz_profiles (
@@ -29,13 +30,18 @@ CREATE TABLE IF NOT EXISTS biz_profiles (
   state VARCHAR(255),
   zip INT,
   biz_description TEXT,
-  biz_url TEXT,
-  biz_campaign VARCHAR(255)
-);
+  biz_url TEXT
+ );
 
-CREATE TABLE IF NOT EXSITS campaigns (
+ CREATE TABLE IF NOT EXISTS campaigns (
+  id SERIAL PRIMARY KEY,
+  biz_id references biz_profiles(id),
+  name TEXT
+ );
+
+
+CREATE TABLE IF NOT EXISTS campaigns_users (
     id SERIAL PRIMARY KEY,
-    users_id references users (user_id),
-    user_profiles_id references user_profiles (user_profiles_id),
-    biz_profiles_id references biz_profiles (biz_profiels_id)
+    users_id references users(id),
+    campaigns_id references campaigns(id)
 );
