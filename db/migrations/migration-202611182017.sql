@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
   account_type BOOL
 );
 
-CREATE TABLE IF NOT EXSITS user_profiles (
+CREATE TABLE IF NOT EXISTS user_profiles (
   id SERIAL PRIMARY KEY,
   age INT,
   sex VARCHAR(255),
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXSITS user_profiles (
   zip INT
 );
 
-CREATE TABLE IF NOT EXSITS biz_profiles (
+CREATE TABLE IF NOT EXISTS biz_profiles (
   id SERIAL PRIMARY KEY,
   bizname VARCHAR(255),
   street_address VARCHAR(255),
@@ -34,5 +34,8 @@ CREATE TABLE IF NOT EXSITS biz_profiles (
 );
 
 CREATE TABLE IF NOT EXSITS campaigns (
-
+    id SERIAL PRIMARY KEY,
+    users_id references users (user_id),
+    user_profiles_id references user_profiles (user_profiles_id),
+    biz_profiles_id references biz_profiles (biz_profiels_id)
 );
