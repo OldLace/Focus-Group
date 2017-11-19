@@ -1,4 +1,4 @@
-INSERT INTO user_profiles (age, sex, height, weight, income, stree_address, city, state, zip) VALUES
+INSERT INTO user_profiles (age, sex, height, weight, income, street_address, city, state, zip) VALUES
   (
     35,
     'male',
