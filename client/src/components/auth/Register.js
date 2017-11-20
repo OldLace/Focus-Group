@@ -12,7 +12,8 @@ class Register extends Component {
        lastname: '',
        company: null
     };
-   this.handleInputChange = this.handleInputChange.bind(this);
+   this.handleInputChange = this.handleInputChange.bind(this)
+   this.setCompany = this.setCompany.bind(this)
 }
 
 handleInputChange(e) {
@@ -21,6 +22,19 @@ handleInputChange(e) {
     this.setState({
         [name]: value,
     });
+}
+
+setCompany(e) {
+  let value = e.target.value
+  let companyType
+  if(value === 'client'){
+    companyType = false
+  }else{
+    companyType = true
+  }
+  this.setState({
+    company: companyType
+  })
 }
 
 render() {
@@ -32,6 +46,8 @@ render() {
                 <input type="text" name="email" value={this.state.email} placeholder="Email Address" onChange={this.handleInputChange} />
                 <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
                 <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
+                <label><input onChange={this.setCompany} type="radio" name="company" id="companyChoice1" value="client" />Client Account</label>
+                <label><input onChange={this.setCompany} type="radio" name="company" id="companyChoice2" value="company" />Corporate Account</label>
                 <input type="submit" value="Register" />
             </form>
             <div id="switch-login" onClick={this.props.setAuthDisplay}>Already have an account?</div>

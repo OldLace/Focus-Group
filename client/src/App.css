@@ -86,7 +86,9 @@ input[type='submit'] {
   background-color: #7dff7d;
   cursor: pointer;
 }
-
+label {
+  text-align: left;
+}
 #switch-login {
   display: inline-block;
   cursor: pointer;
