@@ -35,6 +35,9 @@ app.get('/', (req,res) => {
   res.send('Hello Kareem! This Works');
 });
 
+const authRoutes = require('./routes/auth-routes');
+app.use('/api/auth', authRoutes);
+
 app.use('*', (req, res) => {
   res.status(400).json({
     message: 'Not Found!',
