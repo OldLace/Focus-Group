@@ -2,27 +2,65 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+li {
+  list-style: none;
+}
+ul {
+  margin:0;
+  padding:0;
+}
+/*=====Persistent static navbar=====*/
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: black;
+  color:white;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+header a {
+  text-decoration: none;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+header span {
+  cursor: pointer;
 }
-
-.App-intro {
-  font-size: large;
+footer {
+  background-color: black;
+  color:white;
+  padding: 10px;
 }
+.header-dropdown {
+  position: absolute;
+  color:black;
+  left:85%;
+  top:7%;
+  border:1px solid black;
+  background-color: white;
+}
+.header-dropdown li {
+  padding: 10px 20px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.header-dropdown li:hover {
+  background-color: black;
+  color:white;
+}
+/*==============================*/
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/*======Hero image==============*/
+.hero {
+  padding: 15vw;
+  background-color: grey;
+}
+.hero div {
+  padding: 15px;
+  background-color: white;
+}
+/*==============================*/
+
+.nodisplay {
+  display:none;
 }
