@@ -1,6 +1,7 @@
 import React from 'react'
 
 import UserDetails from './UserDetails'
+import ClientTasks from './ClientTasks'
 
 class ClientPage extends React.Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class ClientPage extends React.Component {
           handleInputChange={this.handleInputChange}
           userDetails={this.state.userDetails}
         />
+        <ClientTasks />
       </div>
     )
   }

@@ -1,5 +1,16 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 li {
@@ -94,3 +105,24 @@ input[type='submit'] {
 }
 /*==============================*/
 
+/*=========Tasks list===========*/
+.client-tasks li {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 5px 20px;
+  background-color: #f9e76b;
+  padding:5px;
+  align-items: center;
+}
+
+.client-tasks button {
+  border:none;
+  border-radius: 0;
+  margin-right: 5px;
+  padding:5px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+/*==============================*/
