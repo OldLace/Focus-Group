@@ -30,4 +30,4 @@ UserProfile.update = () => {
 }
 
 
-module.exports = FocusGroup;
+module.exports = UserProfile;

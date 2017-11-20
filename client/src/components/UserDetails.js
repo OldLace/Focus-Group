@@ -3,7 +3,7 @@ import React from 'react'
 function UserDetails(props) {
   return (
     <div className="UserDetails">
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={(e) => {props.handleSubmit(e)}}>
         <input
           type="text"
           onChange={props.handleInputChange}

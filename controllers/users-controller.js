@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User.js');
-
+const FocusGroup = require('../models/FocusGroup')
 const usersController = {};
 
 usersController.create = (req, res, next) => {
@@ -25,7 +25,8 @@ usersController.create = (req, res, next) => {
         }
       })
     });
-  }).catch(next);
+  })
+  .catch(next);
 }
 
 

@@ -1,5 +1,5 @@
 
-const clientProfile = require('../models/BizProfile');
+const clientProfile = require('../models/ClientProfile');
 
 
 const clientProfileController = {};
@@ -34,12 +34,11 @@ clientProfileController.create = (req, res, next) => {
     street_address: req.body.street_address,
     city: req.body.city,
     state: req.body.state,
-    zip: req.body.zip,
-    user_id: req.body.user_id
-  }).then(biz => {
+    zip: req.body.zip
+  },req.user.id).then(biz => {
     res.json({
       message: 'User Profile added!',
-      client: { client },
+      client: { biz },
     });
   }).catch(next);
 };
@@ -72,4 +71,4 @@ clientProfileController.delete = (req, res, next) => {
 
 
 
-module.exports = bizProfileController;
+module.exports = clientProfileController;

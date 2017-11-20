@@ -1,19 +1,18 @@
-const FocusGroup = require('../models/FocusGroup');
+const UserProfile = require('../models/FocusGroup');
+const FocusGroupController = {};
 
-const focusGroupController = {};
-
-focusGroupController.index = (req, res, next) => {
-  FocusGroup.findAll()
+FocusGroupController.index = (req, res, next) => {
+  UserProfile.findAll()
     .then(users => {
       res.json({
         message: 'ok',
-        data: { userdata },
+        data: { users },
       });
     }).catch(next)
 };
 
 FocusGroupController.show = (req, res, next) => {
-  FocusGroup.findById(req.params.id)
+  UserProfile.findById(req.params.id)
     .then(user => {
       res.json({
         message: 'ok',
@@ -22,19 +21,23 @@ FocusGroupController.show = (req, res, next) => {
     }).catch(next);
 };
 
+// FocusGroupController.create = (req, res, next) => {
+//   console.log(req.user)
 
-focusGroupController.update = (req, res, next) => {
-  FocusGroup.update({
+// }
+
+FocusGroupController.update = (req, res, next) => {
+  UserProfile.update({
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,
   }, req.params.id).then(user => {
     res.json({
       message: 'User Profile updated successfully!',
-      data: { userdata },
+      data: { user },
     });
   }).catch(next);
 };
 
 
-module.exports = focusGroupController;
+module.exports = FocusGroupController;

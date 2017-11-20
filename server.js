@@ -43,6 +43,9 @@ app.use('/api/auth', authRoutes);
 const bizRoutes = require('./routes/biz-routes');
 app.use('/biz', bizRoutes);
 
+const clientRoutes = require('./routes/client-routes')
+app.use('/api/client', clientRoutes)
+
 app.use('*', (req, res) => {
   res.status(400).json({
     message: 'Not Found!',

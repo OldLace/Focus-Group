@@ -13,13 +13,13 @@ ClientProfile.findById = (id) => {
  `, [id]);
 };
 
-ClientProfile.create = (ClientProfile) => {
+ClientProfile.create = (ClientProfile, id) => {
   return db.one(`
     INSERT INTO user_profiles
-    (age, sex, height, weight, income, city, state, zip, user_id);
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    (age, sex, height, weight, income, street_address, city, state, zip, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     RETURNING *
-  `) [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, ClientProfile.user_id]
+  `, [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, id])
 };
 
 
@@ -38,7 +38,7 @@ ClientProfile.update = (ClientProfile, id) => {
   user_id = $10,
   WHERE id = $11
   RETURNING *
-  `) [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, ClientProfile.user_id]
+  `) [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, id]
 };
 
 ClientProfile.destroy = (id) => {

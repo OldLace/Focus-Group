@@ -7,22 +7,22 @@ class ClientPage extends React.Component {
     super(props)
     this.state = {
       user: this.props.user,
-      userDetails: null
+      userDetails: {}
     }
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleDetailSubmit = this.handleDetailSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-    fetch(`api/groups/${this.state.user.id}`)
-    .then(res => res.json())
-    .then(res => {
-      this.setState({
-        userDetails: res.data
-      })
-    })
-    .catch(err => console.log(err))
-  }
+  // componentDidMount() {
+  //   fetch(`api/groups/${this.state.user.id}`)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     this.setState({
+  //       userDetails: res.data
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   handleInputChange(e) {
     const name = e.target.name;
@@ -34,15 +34,15 @@ class ClientPage extends React.Component {
     })
   }
 
-  handleDetailSubmit(e, data) {
+  handleSubmit(e) {
     e.preventDefault()
-    fetch('/api/groups', {
+    fetch('/api/client', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify(data)
+      body: JSON.stringify(this.state.userDetails)
     })
     .then(res => res.json())
     .then(res => {
@@ -57,7 +57,7 @@ class ClientPage extends React.Component {
     return (
       <div className="client-page">
         <UserDetails
-          handleDetailSubmit={this.handleDetailSubmit}
+          handleSubmit={this.handleSubmit}
           handleInputChange={this.handleInputChange}
           userDetails={this.state.userDetails}
         />
