@@ -3,9 +3,9 @@ import React from 'react';
 function Jumbotron(props) {
 
   return (
-    <header>
-      <h1>Hello world</h1>
-    </header>
+    <div className="hero">
+      <div>This will contain the login component.</div>
+    </div>
   )
 
 }

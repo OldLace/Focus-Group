@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome'
 
 function Dropdown(props) {
   return (
-    <div className={ props.toggled ? '' : 'nodisplay' }>
+    <div className={ props.toggled ? 'header-dropdown' : 'nodisplay header-dropdown' }>
       <ul>
         <li>Login (Placeholder)</li>
         <li>Logout (Placeholder)</li>
