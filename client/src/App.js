@@ -18,6 +18,57 @@ class App extends Component {
       user: null,
       accountType: null
     }
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    fetch('http://localhost:3003/api/auth/logout', {
+      credentials: 'include',
+    }).then(res => res.json())
+      .then(res => {
+        this.setState({
+          auth: res.auth,
+        })
+      }).catch(err => console.log(err));
+  }
+
+  handleLoginSubmit(e, data) {
+    e.preventDefault();
+    fetch('http://localhost:3003/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+        console.log(res);
+        this.setState({
+            auth: res.auth,
+            user: res.ata.user,
+    })
+    }).catch(err => console.log(err));
+  }
+
+  handleRegisterSubmit(e, data) {
+    e.preventDefault();
+    fetch('http://localhost:3003/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({
+          auth: res.auth,
+          user: res.data.user,
+        })
+    }).catch(err => console.log(err));
   }
 
   render() {
