@@ -26,7 +26,7 @@ handleInputChange(e) {
 render() {
     return (
        <div className="login">
-            <form className="loginform" onSubmit={(e) => {this.props.handleLoginSubmit(e, this.state)}}>
+            <form className="loginform" onSubmit={(e) => {this.props.handleRegisterSubmit(e, this.state)}}>
                 <input type="text" name="firstname" value={this.state.firstname} placeholder="First Name" onChange={this.handleInputChange} />
                 <input type="text" name="lastname" value={this.state.lastname} placeholder="Last Name" onChange={this.handleInputChange} />
                 <input type="text" name="email" value={this.state.email} placeholder="Email Address" onChange={this.handleInputChange} />
@@ -34,6 +34,7 @@ render() {
                 <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
                 <input type="submit" value="Register" />
             </form>
+            <div id="switch-login" onClick={this.props.setAuthDisplay}>Already have an account?</div>
         </div>
             )
         }

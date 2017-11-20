@@ -9,6 +9,10 @@ ul {
   margin:0;
   padding:0;
 }
+
+.nodisplay {
+  display:none;
+}
 /*=====Persistent static navbar=====*/
 header {
   display: flex;
@@ -61,6 +65,32 @@ footer {
 }
 /*==============================*/
 
-.nodisplay {
-  display:none;
+/*==========Form ==============*/
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 350px;
 }
+
+form input {
+  margin-bottom: 15px;
+  border:none;
+  font-family: inherit;
+  font-size: inherit;
+  padding:3px;
+  border-bottom: 1px solid black;
+}
+
+input[type='submit'] {
+  border:none;
+  background-color: #7dff7d;
+  cursor: pointer;
+}
+
+#switch-login {
+  display: inline-block;
+  cursor: pointer;
+  color: #677eff;
+}
+/*==============================*/
+

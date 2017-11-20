@@ -3,12 +3,20 @@ import Login from './auth/Login'
 import Register from './auth/Register'
 
 class Jumbotron extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       authDisplay:false
     }
+    this.setAuthDisplay = this.setAuthDisplay.bind(this)
   }
+  setAuthDisplay(){
+    console.log('authDisplay set')
+    this.setState({
+      authDisplay:!this.state.authDisplay
+    })
+  }
+
   render() {
     return (
       <div className="hero">
@@ -16,8 +24,12 @@ class Jumbotron extends React.Component {
         {this.state.authDisplay ?
           <Register
             handleRegisterSubmit={this.props.handleRegisterSubmit}
+            setAuthDisplay={this.setAuthDisplay}
           /> :
-          <Login handleLoginSubmit={this.props.handleRegisterSubmit} />
+          <Login
+            handleLoginSubmit={this.props.handleLoginSubmit}
+            setAuthDisplay={this.setAuthDisplay}
+          />
         }
         </div>
       </div>
