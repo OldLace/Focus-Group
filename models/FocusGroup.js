@@ -13,14 +13,6 @@ UserProfile.findById = (id) => {
  `, [id]);
 }
 
-UserProfile.create = (userprofile, userId) => {
-  return db.one(`
-  INSERT INTO user_profiles
-  (age, sex, height, weight, income, street_address, city, state, user_id)
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-  RETURNING *
-`,  [userprofile.age, userprofile.sex, userprofile.height, userprofile.weight, userprofile.income, userprofile.street_address, userprofile.city, userprofile.state, userprofile.zip, userprofile.user_id]);
-}
 
 UserProfile.update = () => {
   return db.one(`
@@ -37,11 +29,5 @@ UserProfile.update = () => {
   `,  [userprofile.age, userprofile.sex, userprofile.height, userprofile.weight, userprofile.income, userprofile.street_address, userprofile.city, userprofile.state, userprofile.zip, userprofile.user_id]);
 }
 
-UserProfile.destroy = (id) => {
-  return db.none(`
-  DELETE FROM user_profiles
-  WHERE id = $1
-`, [id]);
-}
 
 module.exports = FocusGroup;

@@ -8,6 +8,5 @@ focusGroupRoutes.post('/', focusGroupController.create);
 
 focusGroupRoutes.get('/:id', focusGroupController.show);
 focusGroupRoutes.put('/:id', focusGroupController.update);
-focusGroupRoutes.delete('/:id', focusGroupController.delete);
 
 module.exports = focusGroupRoutes;

@@ -3,7 +3,7 @@ const FocusGroup = require('../models/FocusGroup');
 const focusGroupController = {};
 
 focusGroupController.index = (req, res, next) => {
-  User.findAll()
+  FocusGroup.findAll()
     .then(users => {
       res.json({
         message: 'ok',
@@ -13,7 +13,7 @@ focusGroupController.index = (req, res, next) => {
 };
 
 FocusGroupController.show = (req, res, next) => {
-  User.findById(req.params.id)
+  FocusGroup.findById(req.params.id)
     .then(user => {
       res.json({
         message: 'ok',
@@ -22,21 +22,9 @@ FocusGroupController.show = (req, res, next) => {
     }).catch(next);
 };
 
-// FocusGroupController.create = (req, res, next) => {
-//   User.create({
-//     title: req.body.title,
-//     description: req.body.description,
-//     genre: req.body.genre,
-//   }, req.user.id).then(movie => {
-//     res.json({
-//       message: 'New User added successfully!',
-//       data: { user },
-//     });
-//   }).catch(next);
-// };
 
 focusGroupController.update = (req, res, next) => {
-  User.update({
+  FocusGroup.update({
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,
@@ -48,13 +36,5 @@ focusGroupController.update = (req, res, next) => {
   }).catch(next);
 };
 
-focusGroupController.delete = (req, res, next) => {
-  Movie.destroy(req.params.id)
-    .then(() => {
-      res.json({
-        message: 'User data deleted successfully!',
-      });
-    }).catch(next);
-}
 
 module.exports = focusGroupController;
