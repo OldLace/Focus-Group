@@ -2,36 +2,33 @@ import React, { Component } from 'react';
 
 
 class Login extends Component {
-    constructor() {
-      super();
-      this.state = {
-       username: '',
-       password: '',
-    };
-   this.handleInputChange = this.handleInputChange.bind(this);
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      password: ''
     }
-
-
-
-handleInputChage(e) {
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  handleInputChange(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-        [name]: value,
-    });
-}
+      [name]: value,
+    })
+  }
 
-render() {
+  render() {
     return (
-       <div className="login">
-            <form className="loginform" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
-                <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
-                <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
-                <inpur type="submit" value='Log In!?' />
-            </form>
-        </div>
-            )
-        }
+    <div className="login">
+      <form className="loginform" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+        <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
+        <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
+        <input type="submit" value='Log In!?' />
+      </form>
+    </div>
+    )
+  }
 }
 
 
