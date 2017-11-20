@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   logout() {
-    fetch('h/api/auth/logout', {
+    fetch('/api/auth/logout', {
       credentials: 'include',
     }).then(res => res.json())
       .then(res => {
@@ -97,7 +97,7 @@ class App extends Component {
         <Route exact path='/client' render={(props) => {
           return (
             this.state.auth && !this.state.user.company ?
-            <ClientPage /> :
+            <ClientPage user={this.state.user} /> :
             <Redirect push to="/" />
           )
         }} />

@@ -7,8 +7,11 @@ function Dropdown(props) {
   return (
     <div className={ props.toggled ? 'header-dropdown' : 'nodisplay header-dropdown' }>
       <ul>
-        <li>Login (Placeholder)</li>
-        <li>Logout (Placeholder)</li>
+        <li>Account details (Placeholder)</li>
+        <li onClick={() => {
+          props.toggleDropdown()
+          props.logout()
+        }}>Logout</li>
       </ul>
     </div>
   )
@@ -34,7 +37,11 @@ class Header extends React.Component {
       <header>
         <Link to="/"><div className="logo">Home</div></Link>
         <FontAwesome name="bars" onClick={this.toggleDropdown}/>
-        <Dropdown toggled={this.state.dropDown} />
+        <Dropdown
+          toggleDropdown={this.toggleDropdown}
+          logout={this.props.logout}
+          toggled={this.state.dropDown}
+        />
       </header>
     )
   }
