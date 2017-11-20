@@ -15,8 +15,7 @@ class App extends Component {
     super()
     this.state ={
       auth: false,
-      user: null,
-      accountType: null
+      user: null
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -24,19 +23,19 @@ class App extends Component {
   }
 
   logout() {
-    fetch('http://localhost:3003/api/auth/logout', {
+    fetch('h/api/auth/logout', {
       credentials: 'include',
     }).then(res => res.json())
       .then(res => {
         this.setState({
-          auth: res.auth,
+          auth: res.auth
         })
       }).catch(err => console.log(err));
   }
 
   handleLoginSubmit(e, data) {
     e.preventDefault();
-    fetch('http://localhost:3003/api/auth/login', {
+    fetch('/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -48,14 +47,14 @@ class App extends Component {
         console.log(res);
         this.setState({
             auth: res.auth,
-            user: res.ata.user,
-    })
-    }).catch(err => console.log(err));
+            user: res.data.user
+        })
+      }).catch(err => console.log(err));
   }
 
   handleRegisterSubmit(e, data) {
     e.preventDefault();
-    fetch('http://localhost:3003/api/auth/register', {
+    fetch('/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +65,7 @@ class App extends Component {
         console.log(res);
         this.setState({
           auth: res.auth,
-          user: res.data.user,
+          user: res.data.user
         })
     }).catch(err => console.log(err));
   }
@@ -82,41 +81,31 @@ class App extends Component {
         }} />
         <Route exact path='/' render={(props) => {
             return (
-              this.state.auth && this.state.accountType ?
-              this.state.accountType === 'corporate' ?
+              this.state.auth ?
+              this.state.user.company ?
               <Redirect push to='/corporate' /> :
               <Redirect push to='/client' /> :
               <div>
-                <Jumbotron />
-                <AppInfo />
+                <Jumbotron
+                  handleLoginSubmit={this.handleLoginSubmit}
+                  handleRegisterSubmit={this.handleRegisterSubmit}
+                />
               </div>
             )
           }}
         />
         <Route exact path='/client' render={(props) => {
           return (
-            this.state.auth && this.state.accountType === 'client' ?
+            this.state.auth && !this.state.user.company ?
             <ClientPage /> :
-              <div>
-                <Jumbotron
-                  handleLoginSubmit={this.handleLoginSubmit}
-                  handleRegisterSubmit={this.handleRegisterSubmit}
-                />
-                <AppInfo />
-              </div>
+            <Redirect push to="/" />
           )
         }} />
         <Route exact path='/corporate' render={(props) => {
           return (
-            this.state.auth && this.state.accountType === 'corporate' ?
+            this.state.auth && this.state.user.company ?
             <CorporatePage /> :
-            <div>
-              <Jumbotron
-                handleLoginSubmit={this.handleLoginSubmit}
-                handleRegisterSubmit={this.handleRegisterSubmit}
-              />
-              <AppInfo />
-            </div>
+            <Redirect push to="/" />
           )
         }} />
         <Route path='/' component={Footer} />

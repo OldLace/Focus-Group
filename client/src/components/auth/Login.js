@@ -21,11 +21,13 @@ class Login extends Component {
   render() {
     return (
     <div className="login">
-      <form className="loginform" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+      <h3>Login</h3>
+      <form className="loginform" onSubmit={(e) => {this.props.handleLoginSubmit(e, this.state)}}>
         <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
         <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
         <input type="submit" value='Log In!?' />
       </form>
+      <div onClick={this.props.setAuthDisplay}>New user? Register here</div>
     </div>
     )
   }

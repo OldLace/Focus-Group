@@ -34,6 +34,7 @@ render() {
                 <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
                 <input type="submit" value="Register" />
             </form>
+            <div onClick={this.props.setAuthDisplay}>Existing users log in here</div>
         </div>
             )
         }
