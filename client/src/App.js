@@ -75,7 +75,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <Route path='/' component={Header} />
+        <Route path='/' render={(props) => {
+          return (
+            <Header logout={this.logout} />
+          )
+        }} />
         <Route exact path='/' render={(props) => {
             return (
               this.state.auth && this.state.accountType ?
@@ -89,8 +93,32 @@ class App extends Component {
             )
           }}
         />
-        <Route exact path='/client' component={ClientPage} />
-        <Route exact path='/corporate' component={CorporatePage} />
+        <Route exact path='/client' render={(props) => {
+          return (
+            this.state.auth && this.state.accountType === 'client' ?
+            <ClientPage /> :
+              <div>
+                <Jumbotron
+                  handleLoginSubmit={this.handleLoginSubmit}
+                  handleRegisterSubmit={this.handleRegisterSubmit}
+                />
+                <AppInfo />
+              </div>
+          )
+        }} />
+        <Route exact path='/corporate' render={(props) => {
+          return (
+            this.state.auth && this.state.accountType === 'corporate' ?
+            <CorporatePage /> :
+            <div>
+              <Jumbotron
+                handleLoginSubmit={this.handleLoginSubmit}
+                handleRegisterSubmit={this.handleRegisterSubmit}
+              />
+              <AppInfo />
+            </div>
+          )
+        }} />
         <Route path='/' component={Footer} />
         </div>
       </Router>
