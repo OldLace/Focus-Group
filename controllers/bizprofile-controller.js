@@ -15,7 +15,7 @@ bizProfileController.index = (req, res, next) => {
 
 bizProfileController.show = (req, res, next) => {
   BizProfile.findById(req.params.id)
-    .then(user => {
+    .then(biz => {
       res.json({
         message: 'ok',
         biz: { biz },
@@ -32,9 +32,9 @@ bizProfileController.create = (req, res, next) => {
     zip: req.body.zip,
     biz_description: req.body.biz_description,
     biz_url: req.body.biz_url,
-  }).then(biz => {
+  }, req.biz.id).then(biz => {
     res.json({
-      message: 'User Profile added!',
+      message: 'Business added!',
       biz: { biz },
     });
   }).catch(next);
@@ -51,21 +51,21 @@ bizProfileController.update = (req, res, next) => {
     biz_url: req.body.biz_url,
   }, req.params.id).then(biz => {
     res.json({
-      message: 'User Profile updated successfully!',
+      message: 'Business updated successfully!',
       biz: { biz },
     });
   }).catch(next);
 };
 
 bizProfileController.delete = (req, res, next) => {
-  BizProfile .destroy(req.params.id)
+  BizProfile.destroy(req.params.id)
     .then(() => {
       res.status(202).json({
         message: 'Business successfully deleted',
       });
     }).catch(next);
-}
+};
 
 
 
-module.exports = bizProfileControllerController;
+module.exports = bizProfileController;

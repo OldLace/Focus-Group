@@ -13,13 +13,13 @@ BizProfile.findById = (id) => {
  `, [id]);
 };
 
-BizProfile.create = (bizProfile) => {
+BizProfile.create = (bizProfile, bizId) => {
   return db.one(`
     INSERT INTO biz_profiles
-    (bizname, street_address, city, state, zip, biz_description, biz_url)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    (bizname, street_address, city, state, zip, biz_description, biz_url, biz_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *
-  `) [bizProfile.bizname, bizProfile.street_address, bizProfile.city, bizProfile.state, bizProfile.zip, bizProfile.biz_description, bizProfile.biz_url]
+  `) [bizProfile.bizname, bizProfile.street_address, bizProfile.city, bizProfile.state, bizProfile.zip, bizProfile.biz_description, bizProfile.biz_url, bizId]
 };
 
 
