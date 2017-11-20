@@ -8,3 +8,5 @@ INSERT INTO biz_profiles (bizname, street_address, city, state, zip, biz_descrip
     'IT Company that focuses on SMBs',
     'http://www.blacktrussinc.com'
   );
+
+module.exports = BizProfile;
