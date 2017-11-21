@@ -53,7 +53,8 @@ class ClientPage extends React.Component {
     .then(res => res.json())
     .then(res => {
       this.setState({
-        userDetails: res.data
+        userDetails: res.client.biz,
+        apiDataLoaded: true
       })
     })
     .catch(err => console.log(err))

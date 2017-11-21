@@ -26,7 +26,7 @@ clientProfileController.show = (req, res, next) => {
 
 clientProfileController.create = (req, res, next) => {
   clientProfile.create({
-    age: req.body.bizname,
+    age: req.body.age,
     sex: req.body.sex,
     height: req.body.height,
     weight: req.body.weight,
