@@ -19,14 +19,14 @@ clientProfileController.show = (req, res, next) => {
     .then(user => {
       res.json({
         message: 'ok',
-        client: { client },
+        client: { user },
       });
     }).catch(next);
 };
 
 clientProfileController.create = (req, res, next) => {
   clientProfile.create({
-    age: req.body.bizname,
+    age: req.body.age,
     sex: req.body.sex,
     height: req.body.height,
     weight: req.body.weight,

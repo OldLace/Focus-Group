@@ -5,7 +5,6 @@ import './App.css';
 //Custom Components
 import Header from './components/Header' //Persistent navbar at top with options menu
 import Jumbotron from './components/Jumbotron' //Hero image + login
-import AppInfo from './components/AppInfo' //Details about the app to display on main screen
 import Footer from './components/Footer'
 import ClientPage from './components/ClientPage'//Main page for client accounts
 import CorporatePage from './components/CorporatePage'//Main page for corporate accounts

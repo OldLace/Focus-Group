@@ -46,7 +46,7 @@ render() {
                 <input type="text" name="email" value={this.state.email} placeholder="Email Address" onChange={this.handleInputChange} />
                 <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
                 <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
-                <label><input onChange={this.setCompany} type="radio" name="company" id="companyChoice1" value="client" />Client Account</label>
+                <label><input onChange={this.setCompany} type="radio" name="company" id="companyChoice1" value="client" checked={this.state.company ? false : true} />Client Account</label>
                 <label><input onChange={this.setCompany} type="radio" name="company" id="companyChoice2" value="company" />Corporate Account</label>
                 <input type="submit" value="Register" />
             </form>
