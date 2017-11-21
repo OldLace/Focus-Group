@@ -3,6 +3,7 @@ import React from 'react'
 function UserForm(props) {
   return (
     <div className="UserDetails">
+      <h1>Update your account info</h1>
       <form onSubmit={props.handleSubmit}>
         <input
           type="text"
