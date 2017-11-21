@@ -19,7 +19,7 @@ clientProfileController.show = (req, res, next) => {
     .then(user => {
       res.json({
         message: 'ok',
-        client: { client },
+        client: { user },
       });
     }).catch(next);
 };

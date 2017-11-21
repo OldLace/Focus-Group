@@ -1,28 +1,34 @@
 import React from 'react'
 
-import UserDetails from './UserDetails'
+import UserForm from './UserForm'
+import UserInfo from './UserInfo'
 
 class ClientPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user: this.props.user,
-      userDetails: {}
+      userDetails: {},
+      apiDataLoaded: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  // componentDidMount() {
-  //   fetch(`api/groups/${this.state.user.id}`)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     this.setState({
-  //       userDetails: res.data
-  //     })
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+  componentDidMount() {
+    fetch(`api/client/${this.state.user.id}`)
+    .then(res => res.json())
+    .then(res => {
+      if(res.client.user){
+        this.setState({
+          userDetails: res.client.user,
+          apiDataLoaded: true
+        })
+        console.log(res.client.user)
+      }
+    })
+    .catch(err => console.log(err))
+  }
 
   handleInputChange(e) {
     const name = e.target.name;
@@ -56,11 +62,18 @@ class ClientPage extends React.Component {
   render() {
     return (
       <div className="client-page">
-        <UserDetails
-          handleSubmit={this.handleSubmit}
-          handleInputChange={this.handleInputChange}
-          userDetails={this.state.userDetails}
-        />
+        {this.state.apiDataLoaded ?
+          <UserInfo
+            user={this.state.user}
+            userDetails={this.state.userDetails}
+          />
+          :
+          <UserForm
+            handleSubmit={this.handleSubmit}
+            handleInputChange={this.handleInputChange}
+            userDetails={this.state.userDetails}
+          />
+        }
       </div>
     )
   }
