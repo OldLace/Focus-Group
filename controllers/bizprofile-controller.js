@@ -25,14 +25,15 @@ bizProfileController.show = (req, res, next) => {
 
 bizProfileController.create = (req, res, next) => {
   BizProfile.create({
-    bizname: req.body.bizname,
-    street_address: req.body.street_address,
-    city: req.body.city,
-    state: req.body.state,
-    zip: req.body.zip,
-    biz_description: req.body.biz_description,
-    biz_url: req.body.biz_url,
-  }, req.biz.id).then(biz => {
+      bizname: req.body.bizname,
+      street_address: req.body.street_address,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      biz_description: req.body.biz_description,
+      biz_url: req.body.biz_url
+    }, req.user.id)
+  .then(biz => {
     res.json({
       message: 'Business added!',
       biz: { biz },

@@ -41,7 +41,7 @@ const authRoutes = require('./routes/auth-routes');
 app.use('/api/auth', authRoutes);
 
 const bizRoutes = require('./routes/biz-routes');
-app.use('/biz', bizRoutes);
+app.use('/api/biz', bizRoutes);
 
 const clientRoutes = require('./routes/client-routes')
 app.use('/api/client', clientRoutes)
