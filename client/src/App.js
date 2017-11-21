@@ -103,7 +103,7 @@ class App extends Component {
         <Route exact path='/corporate' render={(props) => {
           return (
             this.state.auth && this.state.user.company ?
-            <CorporatePage /> :
+            <CorporatePage user={this.state.user}/> :
             <Redirect push to="/" />
           )
         }} />

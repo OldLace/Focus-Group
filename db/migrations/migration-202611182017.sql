@@ -1,3 +1,9 @@
+DROP TABLE campaigns_users;
+DROP TABLE campaigns;
+DROP TABLE biz_profiles;
+DROP TABLE user_profiles;
+DROP TABLE users;
+
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   firstname VARCHAR(255) NOT NULL,
@@ -30,7 +36,8 @@ CREATE TABLE IF NOT EXISTS biz_profiles (
   state VARCHAR(255),
   zip INT,
   biz_description TEXT,
-  biz_url TEXT
+  biz_url TEXT,
+  biz_id integer references users(id)
  );
 
  CREATE TABLE IF NOT EXISTS campaigns (
@@ -41,7 +48,7 @@ CREATE TABLE IF NOT EXISTS biz_profiles (
 
 
 CREATE TABLE IF NOT EXISTS campaigns_users (
-    id SERIAL PRIMARY KEY,
-    users_id integer references users(id) NOT NULL,
-    campaigns_id integer references campaigns(id) NOT NULL
+  id SERIAL PRIMARY KEY,
+  users_id integer references users(id) NOT NULL,
+  campaigns_id integer references campaigns(id) NOT NULL
 );

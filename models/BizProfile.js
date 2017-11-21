@@ -9,7 +9,7 @@ BizProfile.findAll = () => {
 BizProfile.findById = (id) => {
   return db.oneOrNone(`
     SELECT * FROM biz_profiles
-    WHERE id = $1
+    WHERE biz_id = $1
  `, [id]);
 };
 
@@ -19,7 +19,7 @@ BizProfile.create = (bizProfile, bizId) => {
     (bizname, street_address, city, state, zip, biz_description, biz_url, biz_id)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *
-  `) [bizProfile.bizname, bizProfile.street_address, bizProfile.city, bizProfile.state, bizProfile.zip, bizProfile.biz_description, bizProfile.biz_url, bizId]
+  `, [bizProfile.bizname, bizProfile.street_address, bizProfile.city, bizProfile.state, bizProfile.zip, bizProfile.biz_description, bizProfile.biz_url, bizId])
 };
 
 
