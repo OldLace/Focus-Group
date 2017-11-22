@@ -66,7 +66,17 @@ footer {
 /*==============================*/
 
 /*==========Form ==============*/
-form {
+.loginform {
+  display: flex;
+  flex-direction: column;
+  padding: 0 350px;
+}
+.UserDetails form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 350px;
+}
+.biz-form form {
   display: flex;
   flex-direction: column;
   padding: 0 350px;
@@ -111,3 +121,38 @@ label {
 }
 /*==============================*/
 
+.business-details-top {
+  text-align: left;
+  margin-left: 100px;
+}
+
+.biz-info {
+  display: inline-block;
+  padding: 25px;
+  background-color: #cecece;
+  margin-top: 50px;
+}
+
+.business-search-right {
+  text-align: left;
+  margin:20px;
+  background-color: grey;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.search-form {
+  color: white;
+  padding:20px;
+}
+
+.search-form label {
+  text-align: left;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 3px;
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}

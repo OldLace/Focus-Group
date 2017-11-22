@@ -6,8 +6,8 @@ import './App.css';
 import Header from './components/Header' //Persistent navbar at top with options menu
 import Jumbotron from './components/Jumbotron' //Hero image + login
 import Footer from './components/Footer'
-import ClientPage from './components/ClientPage'//Main page for client accounts
-import CorporatePage from './components/CorporatePage'//Main page for corporate accounts
+import ClientPage from './components/client/ClientPage'//Main page for client accounts
+import CorporatePage from './components/corporate/CorporatePage'//Main page for corporate accounts
 
 class App extends Component {
   constructor() {
