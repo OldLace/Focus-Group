@@ -43,7 +43,7 @@ function SearchUsers(props) {
         </form>
       </div>
       {
-        props.searchResults ? <SearchResults /> : <div className="search-results">Waiting...</div>
+        props.searchResultsLoaded ? <SearchResults searchResults={props.SearchResults}/> : <div className="search-results">Waiting...</div>
       }
     </div>
   )
