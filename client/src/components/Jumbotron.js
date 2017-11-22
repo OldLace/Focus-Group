@@ -25,10 +25,12 @@ class Jumbotron extends React.Component {
           <Register
             handleRegisterSubmit={this.props.handleRegisterSubmit}
             setAuthDisplay={this.setAuthDisplay}
+            apiError={this.props.apiError}
           /> :
           <Login
             handleLoginSubmit={this.props.handleLoginSubmit}
             setAuthDisplay={this.setAuthDisplay}
+            apiError={this.props.apiError}
           />
         }
         </div>

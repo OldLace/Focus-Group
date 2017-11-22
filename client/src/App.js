@@ -14,7 +14,8 @@ class App extends Component {
     super()
     this.state ={
       auth: false,
-      user: null
+      user: null,
+      apiError: null
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -62,11 +63,19 @@ class App extends Component {
     }).then(res => res.json())
       .then(res => {
         console.log(res);
-        this.setState({
-          auth: res.auth,
-          user: res.data.user
-        })
-    }).catch(err => console.log(err));
+        if(res.error){
+          if(res.error.code == 23505){
+            this.setState({
+              apiError: 'Error: Username already exists.'
+            })
+          }
+        }else{
+          this.setState({
+            auth: res.auth,
+            user: res.data.user
+          })
+        }
+    }).catch(err => console.log(err))
   }
 
   render() {
@@ -88,6 +97,7 @@ class App extends Component {
                 <Jumbotron
                   handleLoginSubmit={this.handleLoginSubmit}
                   handleRegisterSubmit={this.handleRegisterSubmit}
+                  apiError={this.state.apiError}
                 />
               </div>
             )

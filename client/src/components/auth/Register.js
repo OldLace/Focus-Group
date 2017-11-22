@@ -51,6 +51,7 @@ render() {
                 <input type="submit" value="Register" />
             </form>
             <div id="switch-login" onClick={this.props.setAuthDisplay}>Already have an account?</div>
+            {this.props.apiError ? <div className="error-handler">{this.props.apiError}</div> : ''}
         </div>
             )
         }

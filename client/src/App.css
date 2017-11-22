@@ -121,7 +121,7 @@ label {
 }
 /*==============================*/
 
-.business-details-top {
+.business-left {
   text-align: left;
   margin-left: 100px;
 }
@@ -133,7 +133,7 @@ label {
   margin-top: 50px;
 }
 
-.business-search-right {
+.business-right {
   text-align: left;
   margin:20px;
   background-color: grey;
