@@ -83,9 +83,16 @@ form input {
 
 input[type='submit'] {
   border:none;
-  background-color: #7dff7d;
+  background-color: whitesmoke;
+  color: black;
+  transition-duration: 0.4s;
   cursor: pointer;
 }
+input[type='submit']:hover {
+  background-color: #4CAF50;
+  color: whitesmoke;
+}
+
 label {
   text-align: left;
 }
