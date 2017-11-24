@@ -6,7 +6,7 @@ UserSearch.search = (filters) => {
   const whereClause = UserSearch.buildWhere(filters);
   console.log('whereClause: ', whereClause)
   return db.manyOrNone(`
-    SELECT users.firstname, users.lastname
+    SELECT users.firstname, users.lastname, user_profiles.*
     FROM users
     JOIN user_profiles on user_profiles.user_id = users.id
     WHERE ${whereClause}
