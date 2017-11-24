@@ -22,10 +22,12 @@ class CorporatePage extends React.Component {
       searchResults: {},
       searchResultsLoaded: false,
       bizUsers: {},
-      bizUsersLoaded: false
+      bizUsersLoaded: false,
+      searchResultsInvalid: null
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.clearAll = this.clearAll.bind(this)
   }
 
   componentDidMount() {
@@ -64,6 +66,25 @@ class CorporatePage extends React.Component {
     }
   }
 
+  clearAll(e) {
+    e.preventDefault()
+    console.log('clearall fired')
+    this.setState({
+      searchQuery: {
+        height:[false,false,false,false],
+        weight:[false,false,false,false],
+        income:[false,false,false,false],
+        age:[false,false,false,false]
+      }
+    })
+  }
+
+  isValid(arr) {
+    return arr.find((el) =>{
+      return el === true
+    })
+  }
+
   handleSubmit(e, destination) {
     e.preventDefault()
     let urel, data, method
@@ -75,7 +96,9 @@ class CorporatePage extends React.Component {
         break
       case 'searchUsers':
         urel = '/api/biz/search'
-        data = this.state.searchQuery
+        let searchQuery = this.state.searchQuery
+        let dataCheck = this.isValid([this.isValid(searchQuery.height),this.isValid(searchQuery.weight),this.isValid(searchQuery.income),this.isValid(searchQuery.age)])
+        data = dataCheck ? this.state.searchQuery : false
         method = 'POST'
         break
       case 'bizUsers':
@@ -85,7 +108,8 @@ class CorporatePage extends React.Component {
       default:
         break;
     }
-    fetch(urel, {
+    if(data){
+      fetch(urel, {
       method: method,
       headers: {
         'Content-Type': 'application/json'
@@ -103,11 +127,18 @@ class CorporatePage extends React.Component {
           })
           break
         case 'searchUsers':
-          this.setState({
-            searchResults: res.data,
-            searchResultsLoaded: true,
-            searchQuery: query
-          })
+          if(res.results&&res.results.filters&&res.results.filters.length){
+            this.setState({
+              searchResults: res.results.filters,
+              searchResultsLoaded: true,
+              searchQuery: query,
+              searchResultsInvalid: null
+            })
+          }else{
+            this.setState({
+              searchResultsInvalid: '0 matches'
+            })
+          }
           break
         case 'bizUsers':
           this.setState({
@@ -119,41 +150,14 @@ class CorporatePage extends React.Component {
           break
       }
     })
+    }else{
+      console.log('Invalid/empty search')
+      this.setState({
+        searchResultsInvalid: 'Invalid/empty search'
+      })
+      return false
+    }
   }
-    // if(destination === 'bizDetails'){
-    //   fetch('/api/biz', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     credentials: 'include',
-    //     body: JSON.stringify(this.state.bizDetails)
-    //   })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     this.setState({
-    //       bizDetails: res.biz.biz,
-    //       apiDataLoaded: true
-    //     })
-    //   })
-    //   .catch(err => console.log(err))
-    // }else{
-    //   fetch('/api/biz/search', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     credentials: 'include',
-    //     body: JSON.stringify(this.state.searchQuery)
-    //   })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     this.setState({
-    //       searchResults: res.searchResults,
-    //       searchResultsLoaded: true
-    //     })
-    //   })
-    // }
 
   render() {
     return (
@@ -185,6 +189,8 @@ class CorporatePage extends React.Component {
             searchResultsLoaded={this.state.searchResultsLoaded}
             handleInputChange={this.handleInputChange}
             handleSubmit={this.handleSubmit}
+            clearAll={this.clearAll}
+            searchResultsInvalid={this.state.searchResultsInvalid}
           />
         </div>
       </div>

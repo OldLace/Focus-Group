@@ -7,7 +7,7 @@ searchController.index = (req, res, next) => {
     .then(filters => {
       res.json({
         message: 'ok',
-        filters: { filters }
+        results: { filters }
       });
     }).catch(next)
 };
