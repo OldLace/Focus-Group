@@ -1,5 +1,5 @@
 const BizProfile = require('../models/BizProfile');
-
+const Group = require('../models/Groups')
 
 const bizProfileController = {};
 
@@ -67,6 +67,15 @@ bizProfileController.delete = (req, res, next) => {
     }).catch(next);
 };
 
+bizProfileController.createGroup = (req,res,next) => {
+  Group.createGroup(req.body.name, req.user.id)
+  .then(group => {
+    res.json({
+      message: 'Group created successfully!',
+      group: { group }
+    })
+  }).catch(next)
+}
 
 
 module.exports = bizProfileController;
