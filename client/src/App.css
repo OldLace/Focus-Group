@@ -91,7 +91,19 @@ form input {
   border-bottom: 1px solid black;
 }
 
-input[type='submit'], .search-form-button {
+input[type='submit'] {
+  border:none;
+  background-color: whitesmoke;
+  color: black;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+input[type='submit']:hover {
+  background-color: #4CAF50;
+  color: whitesmoke;
+}
+
+/* input[type='submit'], .search-form-button {
   border:none;
   background-color: #7dff7d;
   cursor: pointer;
@@ -100,8 +112,8 @@ input[type='submit'], .search-form-button {
   padding: 3px;
   margin: 0 3px;
   vertical-align: top;
-  font-family: inherit;
-}
+  font-family: inherit; */
+
 label {
   text-align: left;
 }
@@ -190,4 +202,14 @@ label {
   border-radius: 3px;
 }
 /*==============================*/
+/*==========Overscroll Fix=======*/
+body {
+  height: 100%;
+  overflow: hidden;
+  /* font-family: 'Lobster', cursive; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+
+
+}
 
