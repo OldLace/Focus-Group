@@ -206,4 +206,10 @@ label {
 body {
   height: 100%;
   overflow: hidden;
+  /* font-family: 'Lobster', cursive; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+
+
 }
+
