@@ -11,4 +11,11 @@ Groups.createGroup = (name, id) => {
   `,  [name, id, id])
 }
 
+Groups.showAll = (id) => {
+  return db.query(`
+  SELECT * FROM groups
+  WHERE biz_id = $1
+  `,[id]);
+}
+
 module.exports = Groups;

@@ -64,7 +64,7 @@ class App extends Component {
       .then(res => {
         console.log(res);
         if(res.error){
-          if(res.error.code == 23505){
+          if(res.error.code === 23505){
             this.setState({
               apiError: 'Error: Username already exists.'
             })
