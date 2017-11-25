@@ -77,5 +77,17 @@ bizProfileController.createGroup = (req,res,next) => {
   }).catch(next)
 }
 
+bizProfileController.groupIndex = (req, res, next) => {
+
+    Group.showAll(req.params.id)
+      .then(groups => {
+        res.json({
+          message: 'ok',
+          groups: { groups }
+        })
+      }).catch(next)
+
+}
+
 
 module.exports = bizProfileController;

@@ -46,6 +46,9 @@ app.use('/api/biz', bizRoutes);
 const clientRoutes = require('./routes/client-routes')
 app.use('/api/client', clientRoutes)
 
+const groupRoutes = require('./routes/group-routes')
+app.use('/api/groups', groupRoutes)
+
 app.use('*', (req, res) => {
   res.status(400).json({
     message: 'Not Found!',

@@ -44,9 +44,13 @@ class CorporatePage extends React.Component {
         console.log(res.biz)
       }
     })
-    // .then(() => {
-    //   fetch('api/biz/groups')
-    // })
+    .then(() => {
+      fetch(`api/groups/${this.state.user.id}`)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+        })
+    })
     .catch(err => console.log(err))
   }
 
