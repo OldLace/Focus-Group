@@ -16,21 +16,32 @@ UserSearch.search = (filters) => {
 
 UserSearch.buildWhere = (filters) => {
   let newArr = [];
+  console.log(filters);
 
-  // if (filters.height.length) {
-  //   newArr.push(UserSearch.buildHeight(filters.height))
-  // }
+   if (filters.height.length) {
+    newArr.push(UserSearch.buildHeight(filters.height))
+  }
 
   if (filters.age.length) {
     newArr.push(UserSearch.buildAge(filters.age))
   }
-  return newArr
+  console.log(newArr);
+   //filter out empty string and join with And
+  if (newArr.length > 1) {
+    let filArr = newArr.filter(e => e !=='');
+    return filArr.join(' AND ')
+  } else {
+    return filArr
+  }
+
 };
 
 UserSearch.buildAge = (age) => {
  const ageMap = ['user_profiles.age BETWEEN 10 AND 15','user_profiles.age BETWEEN 25 AND 34','user_profiles.age BETWEEN 35 AND 44','user_profiles.age > 44']
- let giveageMap = []
- for(let i=0;i<age.length;i++){
+
+  let giveageMap = []
+
+  for(let i=0;i<age.length;i++){
   if(age[i] === true){
     giveageMap.push(ageMap[i])
   }
@@ -40,13 +51,24 @@ UserSearch.buildAge = (age) => {
 }
 
 UserSearch.buildHeight = (height) => {
-   const heightMap = {
-     1: 'user_profiles.height BETWEEN 18 AND 24',
-     2: 'user_profiles.height BETWEEN 25 AND 34',
-     3: 'user_profiles.height BETWEEN 35 AND 44',
-     4: 'user_profiles.height > 44'
-   }
-   return heightMap
+   const heightMap = [
+     'user_profiles.height < 4',
+     'user_profiles.height BETWEEN 4 AND 5',
+     'user_profiles.height BETWEEN 5 AND 6',
+     'user_profiles.height > 6'
+   ];
+
+   const vals = height.reduce((acc, val, indx)=>{
+     if (val) acc.push(heightMap[indx])
+     return acc
+   },[])
+
+   // const vals = height
+   //   .filter(box => !!box)
+   //   .map((box, idx) => heightMap[idx]);
+
+  console.log(`vals: ${vals}`);
+  return vals.join(' OR ');
 }
 
 module.exports = UserSearch;
