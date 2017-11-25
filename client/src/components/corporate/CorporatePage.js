@@ -23,11 +23,13 @@ class CorporatePage extends React.Component {
       searchResultsLoaded: false,
       bizUsers: {},
       bizUsersLoaded: false,
-      searchResultsInvalid: null
+      searchResultsInvalid: null,
+      newUser: {}
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clearAll = this.clearAll.bind(this)
+    this.userHandleInputChange = this.userHandleInputChange.bind(this)
   }
 
   componentDidMount() {
@@ -42,7 +44,22 @@ class CorporatePage extends React.Component {
         console.log(res.biz)
       }
     })
+    // .then(() => {
+    //   fetch('api/biz/groups')
+    // })
     .catch(err => console.log(err))
+  }
+
+  userHandleInputChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('name: ', name)
+    console.log('value: ', value)
+    this.setState((prevState, props) => {
+      return {
+        newUser: Object.assign({}, prevState.newUser, {[name]: value})
+      }
+    })
   }
 
   handleInputChange(e, destination) {
@@ -89,6 +106,11 @@ class CorporatePage extends React.Component {
     e.preventDefault()
     let urel, data, method
     switch(destination) {
+      case 'groups':
+        urel= '/api/biz/groups'
+        data= this.state.newUser
+        method='POST'
+        break
       case 'bizDetails':
         urel = '/api/biz'
         data = this.state.bizDetails
@@ -170,8 +192,9 @@ class CorporatePage extends React.Component {
                 bizDetails={this.state.bizDetails}
               />
               <BizUsers
-                bizUsers={this.state.bizUsers}
-                bizUsersLoaded={this.state.bizUsersLoaded}
+                newUser={this.state.newUser}
+                handleSubmit={this.handleSubmit}
+                userHandleInputChange={this.userHandleInputChange}
               />
             </div>
             :
