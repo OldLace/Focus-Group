@@ -4,19 +4,21 @@ class SearchResults extends React.Component {
   constructor(){
     super()
     this.state = {
-      toggleViews: {}
+      toggleViews: {
+        addBtn: false
+      }
     }
     this.toggleView = this.toggleView.bind(this)
   }
 
-  toggleView(id) {
+  toggleView(id, btnId) {
     console.log(id)
     // console.log(name)
     let toggled
     if(this.state.toggleViews[id]){
       toggled = false
     }else{
-      toggled = true
+      toggled = btnId ? btnId : true
     }
     this.setState((prevState,props) => {
       return {
@@ -36,9 +38,22 @@ class SearchResults extends React.Component {
     }else{
       return (
         <div className="search-results">
+          <div className={this.state.toggleViews.addBtn ? '' : 'nodisplay'}>
+            <ul>
+              {this.props.groups.map((el, index) => {
+                return <li key={el.id} onClick={(e)=> {
+                  this.props.addToGroup(this.state.toggleViews.addBtn, el.group_name)
+                  this.toggleView('addBtn')
+                }}>{el.group_name}</li>
+              })}
+            </ul>
+          </div>
           <ul>
           {this.props.searchResults.map((el, index) => {
-            return <li onClick={(e)=>{this.toggleView(el.id)}} key={index}>{el.firstname} {el.lastname}
+            return <li key={index}>
+              <button onClick={(e)=>{this.toggleView(el.id)}}>Show Details</button>
+              <button onClick={(e)=>{this.toggleView('addBtn', el.id)}}>Add to group</button>
+              {el.firstname} {el.lastname}
               <div className={this.state.toggleViews[el.id] ? '' : 'nodisplay'}>
                 <ul>
                   <li>Age: {el.age}</li>

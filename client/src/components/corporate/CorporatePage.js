@@ -4,6 +4,7 @@ import BizInfo from './BizInfo'
 import BizForm from './BizForm'
 import SearchUsers from './SearchUsers'
 import BizUsers from './BizUsers'
+import BizShowGroups from './BizShowGroups'
 
 const query = {
   height:[false,false,false,false],
@@ -11,6 +12,7 @@ const query = {
   income:[false,false,false,false],
   age:[false,false,false,false]
 }
+
 class CorporatePage extends React.Component {
   constructor(props) {
     super(props)
@@ -24,12 +26,15 @@ class CorporatePage extends React.Component {
       bizUsers: {},
       bizUsersLoaded: false,
       searchResultsInvalid: null,
-      newUser: {}
+      newUser: {},
+      groups: {},
+      groupsLoaded: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clearAll = this.clearAll.bind(this)
     this.userHandleInputChange = this.userHandleInputChange.bind(this)
+    this.addToGroup = this.addToGroup.bind(this)
   }
 
   componentDidMount() {
@@ -48,10 +53,33 @@ class CorporatePage extends React.Component {
       fetch(`api/groups/${this.state.user.id}`)
         .then(res => res.json())
         .then(res => {
-          console.log(res);
+          this.setState({
+            groups: res.groups.groups,
+            groupsLoaded: true
+          })
         })
     })
     .catch(err => console.log(err))
+  }
+
+  addToGroup(id, name) {
+    console.log('biz_id: ',this.state.user.id)
+    console.log('group_name: ',name)
+    fetch(`/api/groups/${id}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        biz_id: this.state.user.id,
+        user_id: id,
+        group_name: name
+      })
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
   }
 
   userHandleInputChange(e) {
@@ -111,7 +139,7 @@ class CorporatePage extends React.Component {
     let urel, data, method
     switch(destination) {
       case 'groups':
-        urel= '/api/biz/groups'
+        urel= '/api/groups'
         data= this.state.newUser
         method='POST'
         break
@@ -128,7 +156,7 @@ class CorporatePage extends React.Component {
         method = 'POST'
         break
       case 'bizUsers':
-        urel = '/api/biz/groups'
+        urel = '/api/groups'
         method = 'GET'
         break
       default:
@@ -195,6 +223,10 @@ class CorporatePage extends React.Component {
                 user={this.state.user}
                 bizDetails={this.state.bizDetails}
               />
+              <BizShowGroups
+                groups={this.state.groups}
+                groupsLoaded={this.state.groupsLoaded}
+              />
               <BizUsers
                 newUser={this.state.newUser}
                 handleSubmit={this.handleSubmit}
@@ -211,6 +243,8 @@ class CorporatePage extends React.Component {
         </div>
         <div className="business-right">
           <SearchUsers
+            groups={this.state.groups}
+            groupsLoaded={this.state.groupsLoaded}
             searchQuery={this.state.searchQuery}
             searchResults={this.state.searchResults}
             searchResultsLoaded={this.state.searchResultsLoaded}
@@ -218,6 +252,7 @@ class CorporatePage extends React.Component {
             handleSubmit={this.handleSubmit}
             clearAll={this.clearAll}
             searchResultsInvalid={this.state.searchResultsInvalid}
+            addToGroup={this.addToGroup}
           />
         </div>
       </div>

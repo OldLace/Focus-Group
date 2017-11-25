@@ -89,5 +89,21 @@ bizProfileController.groupIndex = (req, res, next) => {
 
 }
 
+bizProfileController.addToGroup = (req, res, next) => {
+  console.log('biz_id: ',req.body.biz_id)
+  console.log('group_name: ',req.body.group_name)
+
+  Group.addToGroup({
+    biz_id: req.body.biz_id,
+    user_id: req.params.id,
+    group_name: req.body.group_name
+  })
+  .then(groupMember => {
+    res.json({
+      message: 'User successfully added to group.',
+      groupMember: { groupMember }
+    })
+  }).catch(next)
+}
 
 module.exports = bizProfileController;
