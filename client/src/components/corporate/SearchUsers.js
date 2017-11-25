@@ -43,6 +43,9 @@ function SearchUsers(props) {
           <SearchResults
             searchResults={props.searchResults}
             searchResultsInvalid={props.searchResultsInvalid}
+            groups={props.groups}
+            groupsLoaded={props.groupsLoaded}
+            addToGroup={props.addToGroup}
           />
         : <div className="search-results">Waiting...</div>
       }
