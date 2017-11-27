@@ -6,7 +6,7 @@ UserSearch.search = (filters) => {
   const whereClause = UserSearch.buildWhere(filters);
   console.log('whereClause: ', whereClause)
   return db.manyOrNone(`
-    SELECT users.firstname, users.lastname, user_profiles.*
+    SELECT users.firstname, users.lastname, users.username, user_profiles.*
     FROM users
     JOIN user_profiles on user_profiles.user_id = users.id
     WHERE ${whereClause}
@@ -27,7 +27,9 @@ UserSearch.buildWhere = (filters) => {
   if(filters.income.length) {
     newArr.push(UserSearch.buildString(filters.income, 'income'))
   }
-
+  if(filters.zip.length) {
+    newArr.push(`user_profiles.zip = ${filters.zip}`)
+  }
   return newArr
     .filter((el) => {
       return el.length > 0

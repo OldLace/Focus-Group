@@ -52,7 +52,7 @@ class SearchResults extends React.Component {
           {this.props.searchResults.map((el, index) => {
             return <li key={index}>
               <button onClick={(e)=>{this.toggleView(el.id)}}>Show Details</button>
-              <button onClick={(e)=>{this.toggleView('addBtn', el.id)}}>Add to group</button>
+              <button onClick={(e)=>{this.toggleView('addBtn', el.user_id)}}>Add to group</button>
               {el.firstname} {el.lastname}
               <div className={this.state.toggleViews[el.id] ? '' : 'nodisplay'}>
                 <ul>

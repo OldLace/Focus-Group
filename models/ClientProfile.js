@@ -8,8 +8,10 @@ ClientProfile.findAll = () => {
 
 ClientProfile.findById = (id) => {
   return db.oneOrNone(`
-    SELECT * FROM user_profiles
-    WHERE id = $1
+    SELECT users.*, user_profiles.*
+    FROM user_profiles
+    JOIN users on user_profiles.user_id = users.id
+    WHERE user_id = $1
  `, [id]);
 };
 
