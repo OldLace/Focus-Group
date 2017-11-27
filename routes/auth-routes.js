@@ -38,5 +38,6 @@ authRouter.get('/logout', (req, res) => {
     }
   })
 });
+authRouter.delete('/', usersController.destroy);
 
 module.exports = authRouter;

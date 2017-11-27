@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User.js');
+const Biz = require('../models/BizProfile.js')
+const Groups = require('../models/Groups.js')
 const FocusGroup = require('../models/FocusGroup')
 const usersController = {};
 
@@ -29,5 +31,44 @@ usersController.create = (req, res, next) => {
   .catch(next);
 }
 
+usersController.destroy = (req, res, next) => {
+  if(req.user.company){
+    Biz.destroy(req.user.id)
+      .then(() => {
+      Groups.destroy(req.user.id)
+    })
+    .then(() => {
+      User.destroy(req.user.id)
+    })
+    .then(user => {
+      res.status(200).json({
+        message: 'user successfully deleted',
+        auth: false,
+        data: {
+          user
+        }
+      })
+    })
+    .catch(next)
+  }else{
+    User.destroyProfile(req.user.id)
+      .then(() => {
+      Groups.destroy(req.user.id)
+      })
+      .then(() => {
+        User.destroy(req.user.id)
+      })
+      .then(user => {
+        res.status(200).json({
+          message: 'user successfully deleted',
+          auth: false,
+          data: {
+            user
+          }
+      })
+    })
+    .catch(next)
+  }
+}
 
 module.exports = usersController;

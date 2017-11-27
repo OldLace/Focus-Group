@@ -28,6 +28,7 @@ class Login extends Component {
         <input type="submit" value='Log In' />
       </form>
       <div id="switch-login" onClick={this.props.setAuthDisplay}>New user</div>
+        {this.props.apiError ? <div className="api-error">{this.props.apiError}</div> : ''}
     </div>
     )
   }
