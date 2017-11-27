@@ -111,9 +111,6 @@ class CorporatePage extends React.Component {
       })
       .catch(err => console.log(err))
     }
-  }
-    })
-    .catch(err => console.log(err))
   }//Add a client to a group from a list returned from search results
 
   removeFromGroup(biz_id, user_id, group_name) {
