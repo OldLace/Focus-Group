@@ -54,6 +54,29 @@ function UserForm(props) {
           value={props.userDetails.state ? props.userDetails.state : ''}
           placeholder="State"
         />
+        <div>
+          Gender:
+          <label>
+            Male
+            <input
+              type="radio"
+              onChange={props.handleInputChange}
+              name="sex"
+              value="male"
+              checked={props.userDetails.sex && props.userDetails.sex === 'male' ? true : false}
+            />
+          </label>
+          <label>
+            Female
+            <input
+              type="radio"
+              onChange={props.handleInputChange}
+              name="sex"
+              value="female"
+              checked={props.userDetails.sex && props.userDetails.sex === 'female' ? true : false}
+            />
+          </label>
+        </div>
         <input
           type="text"
           onChange={props.handleInputChange}
