@@ -46,6 +46,13 @@ Groups.destroyGroup = (group) => {
   `, [group.group_name, group.biz_id])
 }
 
+Groups.destroy = id => {
+  return db.none(`
+    DELETE FROM groups
+    WHERE user_id = $1
+  `,id)
+}
+
 module.exports = Groups;
 
 

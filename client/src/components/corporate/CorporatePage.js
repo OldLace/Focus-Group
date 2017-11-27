@@ -44,6 +44,7 @@ class CorporatePage extends React.Component {
     this.deleteGroup = this.deleteGroup.bind(this)
     this.showUserDetails = this.showUserDetails.bind(this),
     this.hideUserDetails = this.hideUserDetails.bind(this)
+    this.promptCheck = this.promptCheck.bind(this)
   }
 
   componentDidMount() {
@@ -65,6 +66,10 @@ class CorporatePage extends React.Component {
     this.setState({
       userDetailsShown: false
     })
+  }//Used by 'X' button in show user details from group view to hide display
+
+  promptCheck(message) {
+    return window.confirm(message)
   }
 
   fetchGroups() {
@@ -77,11 +82,9 @@ class CorporatePage extends React.Component {
           })
         })
       .catch(err => console.log(err))
-  }
+  }//Get list of groups associated with a corporate account
 
   addToGroup(id, name) {
-    console.log('biz_id: ',this.state.user.id)
-    console.log('group_name: ',name)
     fetch(`/api/groups/${id}`,{
       method: 'POST',
       headers: {
@@ -102,30 +105,32 @@ class CorporatePage extends React.Component {
       })
     })
     .catch(err => console.log(err))
-  }
+  }//Add a client to a group from a list returned from search results
 
   removeFromGroup(biz_id, user_id, group_name) {
-    fetch(`/api/groups/`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        biz_id: biz_id,
-        user_id: user_id,
-        group_name: group_name
-      })
-    })
-    .then(res => res.json())
-    .then(res => {
-        this.setState({
-          groups: res.groups.groups,
-          groupsLoaded: true
+    if(this.promptCheck('Are you sure you want to remove this user?')){
+      fetch(`/api/groups/`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          biz_id: biz_id,
+          user_id: user_id,
+          group_name: group_name
         })
       })
-    .catch(err => console.log(err))
-  }
+      .then(res => res.json())
+      .then(res => {
+          this.setState({
+            groups: res.groups.groups,
+            groupsLoaded: true
+          })
+        })
+      .catch(err => console.log(err))
+   }
+  }//Remove from group - called when clicking the 'X' next to a group members name
 
   userHandleInputChange(e) {
     const name = e.target.name;
@@ -137,13 +142,13 @@ class CorporatePage extends React.Component {
         newUser: Object.assign({}, prevState.newUser, {[name]: value})
       }
     })
-  }
+  }//Ties state to the 'create new group' text input
 
   handleInputChange(e, destination) {
     const name = e.target.name;
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    const checkValue = e.target.value;
-    if(destination === 'bizDetails'){
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;//Sets value to true/false if a checkbox, else the value of a text input
+    const checkValue = e.target.value;//Gets 'value' of a checkbox input, its hidden info
+    if(destination === 'bizDetails'){//Tells the function which form it is working with - the search field or the business details one.
       this.setState((prevState,props) => {
         return {
           bizDetails: Object.assign({}, prevState.bizDetails, {[name]: value})
@@ -152,7 +157,7 @@ class CorporatePage extends React.Component {
     }else{
       let filteredState
       if(name === 'zip'){
-        filteredState = value
+        filteredState = value //If it is the zipcode field in the search form, set the value to the actual text value, otherwise to the true/false of a checkbox
       }else{
         filteredState = this.state.searchQuery[name]
         filteredState[checkValue] = value
@@ -177,7 +182,7 @@ class CorporatePage extends React.Component {
         zip: ''
       }
     })
-  }
+  }//Clear all fields button used in the search form - resets all to empty.
 
   isValid(arr) {
     if(typeof(arr === 'string')){
@@ -187,12 +192,12 @@ class CorporatePage extends React.Component {
         return el === true
       })
     }
-  }
+  }//Checks that there are actual search terms active in the search form
 
   handleSubmit(e, destination) {
     e.preventDefault()
     let urel, data, method
-    switch(destination) {
+    switch(destination) {//Sets which API call to use and associated data to act upon dependent upon the destination argument
       case 'groups':
         urel= '/api/groups'
         data= this.state.newUser
@@ -228,7 +233,7 @@ class CorporatePage extends React.Component {
     })
     .then(res => res.json())
     .then(res => {
-      switch(destination) {
+      switch(destination) {//What to do with the api call results according to the active form specified
         case 'groups':
           this.setState({
             groups: res.groups.groups,
@@ -242,7 +247,7 @@ class CorporatePage extends React.Component {
           })
           break
         case 'searchUsers':
-          if(res.results&&res.results.filters&&res.results.filters.length){
+          if(res.results&&res.results.filters&&res.results.filters.length){//Just typechecking because the backend needs work- result data structure can be inconsistent.
             this.setState({
               searchResults: res.results.filters,
               searchResultsLoaded: true,
@@ -265,8 +270,7 @@ class CorporatePage extends React.Component {
           break
       }
     })
-    }else{
-      console.log('Invalid/empty search')
+    }else{//if(data) - if isValid function determines that there isn't a real search
       this.setState({
         searchResultsInvalid: 'Invalid/empty search'
       })
@@ -275,25 +279,28 @@ class CorporatePage extends React.Component {
   }
 
   deleteGroup(groupname) {
-    fetch(`/api/groups/${groupname}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        biz_id: this.state.user.id
+    if(this.promptCheck('Are you sure you want to delete this group?')){
+      fetch(`/api/groups/${groupname}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          biz_id: this.state.user.id
+        })
       })
-    })
-    .then(res => res.json())
-    .then(res => {
-      this.setState({
-        groups: res.groups.groups,
-        groupsLoaded: true
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          groups: res.groups.groups,
+          groupsLoaded: true
+        })
       })
-    })
-    .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err))
+    }
+  }//Delete a group - called by clicking the X next to a group
+
   showUserDetails(user_id) {
     fetch(`/api/client/${user_id}`)
     .then(res => res.json())
@@ -304,7 +311,7 @@ class CorporatePage extends React.Component {
         userInfoLoaded: true
       })
     })
-  }
+  }//API call made by clicking 'info' on a user listed under a group
 
   render() {
     return (
