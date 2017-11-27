@@ -11,6 +11,7 @@ const query = {
   weight:[false,false,false,false],
   income:[false,false,false,false],
   age:[false,false,false,false],
+  sex:[false,false],
   zip: ''
 }
 
@@ -42,7 +43,7 @@ class CorporatePage extends React.Component {
     this.removeFromGroup = this.removeFromGroup.bind(this)
     this.fetchGroups = this.fetchGroups.bind(this)
     this.deleteGroup = this.deleteGroup.bind(this)
-    this.showUserDetails = this.showUserDetails.bind(this),
+    this.showUserDetails = this.showUserDetails.bind(this)
     this.hideUserDetails = this.hideUserDetails.bind(this)
   }
 
@@ -80,28 +81,31 @@ class CorporatePage extends React.Component {
   }
 
   addToGroup(id, name) {
-    console.log('biz_id: ',this.state.user.id)
-    console.log('group_name: ',name)
-    fetch(`/api/groups/${id}`,{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        biz_id: this.state.user.id,
-        user_id: id,
-        group_name: name
-      })
+    let check = this.state.groups.find((el) => {
+      return el.user_id === id && el.group_name === name
     })
-    .then(res => res.json())
-    .then(res => {
-      this.setState({
-        groups: res.groups.groups,
-        groupsLoaded: true
+    if(!check){
+      fetch(`/api/groups/${id}`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          biz_id: this.state.user.id,
+          user_id: id,
+          group_name: name
+        })
       })
-    })
-    .catch(err => console.log(err))
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          groups: res.groups.groups,
+          groupsLoaded: true
+        })
+      })
+      .catch(err => console.log(err))
+    }
   }
 
   removeFromGroup(biz_id, user_id, group_name) {
@@ -173,6 +177,7 @@ class CorporatePage extends React.Component {
         height:[false,false,false,false],
         weight:[false,false,false,false],
         income:[false,false,false,false],
+        sex:[false,false],
         age:[false,false,false,false],
         zip: ''
       }

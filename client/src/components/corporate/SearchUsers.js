@@ -34,6 +34,11 @@ function SearchUsers(props) {
             <label><input name="income" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[2] : false} onChange={props.handleInputChange} />50-$100,000</label>
             <label><input name="income" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[3] : false} onChange={props.handleInputChange} />More than $100,000</label>
           </div>
+          <div className="search-category">
+            <span>Gender: </span>
+            <label><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
+            <label><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+          </div>
           <input name="zip" value={props.searchQuery ? props.searchQuery.zip : ''} onChange={props.handleInputChange} placeholder="Zip code"/>
           <button className="search-form-button" onClick={props.clearAll}>Clear all fields</button>
           <input className="search-form-button" type="submit" value="search" />
