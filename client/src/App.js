@@ -15,11 +15,13 @@ class App extends Component {
     this.state ={
       auth: false,
       user: null,
-      apiError: null
+      apiError: null,
+
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
+    this.deleteAccount = this.deleteAccount.bind(this)
   }
 
   logout() {
@@ -35,6 +37,9 @@ class App extends Component {
 
   handleLoginSubmit(e, data) {
     e.preventDefault();
+    this.setState({
+      apiError: null
+    })
     fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -44,12 +49,37 @@ class App extends Component {
         body: JSON.stringify(data)
     }).then(res => res.json())
         .then(res => {
-        console.log(res);
-        this.setState({
-            auth: res.auth,
-            user: res.data.user
-        })
+          if(res.auth){
+            this.setState({
+              auth: res.auth,
+              user: res.data.user
+            })
+          }else{
+            this.setState({
+              apiError: 'User not found'
+            })
+          }
       }).catch(err => console.log(err));
+  }
+
+  deleteAccount() {
+    let confirmDelete = window.prompt('Are you sure you want to delete this account? Type your username to confirm.')
+    if(confirmDelete&& confirmDelete === this.state.user.username){
+      fetch('/api/auth/', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials:'include'
+      })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          auth: res.auth,
+          user: res.data.user
+        })
+      })
+    }
   }
 
   handleRegisterSubmit(e, data) {
@@ -84,7 +114,10 @@ class App extends Component {
         <div className="App">
         <Route path='/' render={(props) => {
           return (
-            <Header logout={this.logout} />
+            <Header
+              logout={this.logout}
+              deleteAccount={this.deleteAccount}
+            />
           )
         }} />
         <Route exact path='/' render={(props) => {

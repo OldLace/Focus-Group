@@ -7,7 +7,10 @@ function Dropdown(props) {
   return (
     <div className={ props.toggled ? 'header-dropdown' : 'nodisplay header-dropdown' }>
       <ul>
-        <li>Account details (Placeholder)</li>
+        <li onClick={() => {
+          props.toggleDropdown()
+          props.deleteAccount()
+        }}>Delete Account</li>
         <li onClick={() => {
           props.toggleDropdown()
           props.logout()
@@ -41,6 +44,7 @@ class Header extends React.Component {
           toggleDropdown={this.toggleDropdown}
           logout={this.props.logout}
           toggled={this.state.dropDown}
+          deleteAccount={this.props.deleteAccount}
         />
       </header>
     )

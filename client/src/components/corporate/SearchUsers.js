@@ -48,7 +48,7 @@ function SearchUsers(props) {
             groupsLoaded={props.groupsLoaded}
             addToGroup={props.addToGroup}
           />
-        : <div className="search-results">Waiting...</div>
+        : <div className="search-results">...</div>
       }
     </div>
   )
