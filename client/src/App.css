@@ -154,7 +154,7 @@ label {
 .business-right {
   text-align: left;
   margin:20px;
-  background-color: grey;
+  background-color: white;
   display: inline-block;
   border-radius: 3px;
 }
@@ -239,24 +239,6 @@ body {
 
 .search-form {
 box-shadow: 0 10px 6px 6px
-
-}
-
-.userthings {
-  display: flex;
-  /* margin-bottom: 100px;  */
-  /* padding-top: 50px; */
-}
-
-/* #categoryone {
-  flex: 1;
-} */
-.boxy {
-  background: lightslategray;
-  /* flex: 2; */
-  /* margin-top: -25px; */
-  /* color: black; */
-  /* font: grey; */
 }
 label {
   color: black;
@@ -266,29 +248,33 @@ label {
 }
 .buttondiv {
   margin-left: 550px;
-
-  /* margin-top: 75px; */
-}
-form {
-  /* display: flex; */
 }
 .userthings {
   display: flex;
-  /* margin-bottom: 50px; */
 }
-
 .search-category span :hover {
   background-color: lightblue;
 }
+/*==============================*/
+/*====User Search Box=========*/
 .boxy {
+  background: lightslategray;
+  position: relative;
   font-family: 'Montserrat', sans-serif;
     /* font-family: 'Lobster', cursive; */
   font-weight: 300;
   border-radius: 4px;
   box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);
+  top: -350px;
+  left: 250px;
 }
+
+/*==============================*/
+/*====Business Info Box=========*/
 .biz-info {
   background-color: lightsteelblue;
   border-radius: 4px;
   box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);
 }
+
+/* biz-users */
