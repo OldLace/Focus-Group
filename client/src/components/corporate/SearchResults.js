@@ -36,15 +36,29 @@ class SearchResults extends React.Component {
         </div>
       )
     }else{
+      let uniqueGroups = []
+      this.props.groups.map((el) => {
+        if(!uniqueGroups.find((item) => {
+            return item === el.group_name
+        })){
+          uniqueGroups.push(el.group_name)
+        }
+      })
+      // this.props.groups.map((el, index) => {
+      //           return <li key={el.id} onClick={(e)=> {
+      //             this.props.addToGroup(this.state.toggleViews.addBtn, el.group_name)
+      //             this.toggleView('addBtn')
+      //           }}>{el.group_name}</li>
+      //         })
       return (
         <div className="search-results">
           <div className={this.state.toggleViews.addBtn ? '' : 'nodisplay'}>
             <ul>
-              {this.props.groups.map((el, index) => {
-                return <li key={el.id} onClick={(e)=> {
-                  this.props.addToGroup(this.state.toggleViews.addBtn, el.group_name)
+              {uniqueGroups.map((el, index) => {
+                return <li key={index} onClick={(e)=> {
+                  this.props.addToGroup(this.state.toggleViews.addBtn, el)
                   this.toggleView('addBtn')
-                }}>{el.group_name}</li>
+                }}>{el}</li>
               })}
             </ul>
           </div>
@@ -60,6 +74,7 @@ class SearchResults extends React.Component {
                   <li>Height: {el.height}</li>
                   <li>Weight: {el.weight}</li>
                   <li>Income: {el.income}</li>
+                  <li>Gender: {el.sex}</li>
                   <li>Address: {el.street_address} {el.city}, {el.state} {el.zip}</li>
                 </ul>
               </div>

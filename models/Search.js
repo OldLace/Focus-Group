@@ -30,6 +30,9 @@ UserSearch.buildWhere = (filters) => {
   if(filters.zip.length) {
     newArr.push(`user_profiles.zip = ${filters.zip}`)
   }
+  if(filters.sex.length) {
+    newArr.push(UserSearch.buildString(filters.sex, 'sex'))
+  }
   return newArr
     .filter((el) => {
       return el.length > 0
@@ -42,6 +45,9 @@ UserSearch.buildString = (arr, type) => {
  let returnArray = []
 
  switch(type){
+  case 'sex':
+    compareArray = ["user_profiles.sex = 'male'", "user_profiles.sex = 'female'"]
+    break;
   case 'age':
     compareArray = ['user_profiles.age BETWEEN 10 AND 15','user_profiles.age BETWEEN 25 AND 34','user_profiles.age BETWEEN 35 AND 44','user_profiles.age > 44']
     break;

@@ -51,6 +51,14 @@ function SearchUsers(props) {
             <button className="search-form-button" onClick={props.clearAll}>Clear all fields</button>
             <input className="search-form-button" type="submit" value="search" />
           </div>
+          <div className="search-category">
+            <span>Gender: </span>
+            <label><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
+            <label><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+          </div>
+          <input name="zip" value={props.searchQuery ? props.searchQuery.zip : ''} onChange={props.handleInputChange} placeholder="Zip code"/>
+          <button className="search-form-button" onClick={props.clearAll}>Clear all fields</button>
+          <input className="search-form-button" type="submit" value="search" />
         </form>
       </div>
       {
