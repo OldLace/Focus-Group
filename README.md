@@ -24,9 +24,51 @@ The purpose of this app is to connect businesses with users who would like to pa
 <div style="background-color: #fef0cf;padding:10px;margin-bottom: 10px;">
 
 ### Database Structure:
+DB Name: focus_group
 
-##### 3 Tables:
-
+##### Database Tables:
+      groups
+        - id SERIAL PRIMARY KEY,
+        - group_name
+        - biz_id
+        - user_id
+        
+      user_profiles
+        - id SERIAL PRIMARY KEY,
+        - age INT,
+        - sex VARCHAR(255),
+        - height INT,
+        - weight INT,
+        - income INT,
+        - street_address VARCHAR(255),
+        - city VARCHAR(255),
+        - state VARCHAR(255),
+        - zip INT,
+        - user_id integer references users(id) NOT NULL
+      
+      
+      biz_profiles
+        - id SERIAL PRIMARY KEY,
+        - bizname VARCHAR(255),
+        - street_address VARCHAR(255),
+        - city VARCHAR(255),
+        - state VARCHAR(255),
+        - zip INT,
+        - biz_description TEXT,
+        - biz_url TEXT,
+        - biz_id integer references 
+        
+       
+       campaigns
+        - id SERIAL PRIMARY KEY,
+        - biz_id integer references biz_profiles(id) NOT NULL,
+        - c_name TEXT
+        
+       campaigns_users
+        - id SERIAL PRIMARY KEY,
+        - users_id integer references users(id) NOT NULL,
+        - campaigns_id integer references campaigns(id) NOT NULL
+       
 </div>
 
 <div style="background-color: #fef0cf;padding:10px;margin-bottom: 10px;">
