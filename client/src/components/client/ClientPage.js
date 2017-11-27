@@ -2,6 +2,8 @@ import React from 'react'
 
 import UserForm from './UserForm'
 import UserInfo from './UserInfo'
+import ClientTasks from './ClientTasks'
+
 
 class ClientPage extends React.Component {
   constructor(props) {
@@ -75,6 +77,7 @@ class ClientPage extends React.Component {
             userDetails={this.state.userDetails}
           />
         }
+        <ClientTasks />
       </div>
     )
   }
