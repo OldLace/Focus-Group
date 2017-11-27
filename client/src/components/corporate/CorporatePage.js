@@ -10,7 +10,8 @@ const query = {
   height:[false,false,false,false],
   weight:[false,false,false,false],
   income:[false,false,false,false],
-  age:[false,false,false,false]
+  age:[false,false,false,false],
+  zip: ''
 }
 
 class CorporatePage extends React.Component {
@@ -28,7 +29,10 @@ class CorporatePage extends React.Component {
       searchResultsInvalid: null,
       newUser: {},
       groups: {},
-      groupsLoaded: false
+      groupsLoaded: false,
+      userInfo: {},
+      userInfoLoaded: false,
+      userDetailsShown: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -38,6 +42,8 @@ class CorporatePage extends React.Component {
     this.removeFromGroup = this.removeFromGroup.bind(this)
     this.fetchGroups = this.fetchGroups.bind(this)
     this.deleteGroup = this.deleteGroup.bind(this)
+    this.showUserDetails = this.showUserDetails.bind(this),
+    this.hideUserDetails = this.hideUserDetails.bind(this)
   }
 
   componentDidMount() {
@@ -53,6 +59,12 @@ class CorporatePage extends React.Component {
       }
     })
     .then(this.fetchGroups())
+  }
+
+  hideUserDetails() {
+    this.setState({
+      userDetailsShown: false
+    })
   }
 
   fetchGroups() {
@@ -138,8 +150,13 @@ class CorporatePage extends React.Component {
         }
       })
     }else{
-      let filteredState = this.state.searchQuery[name];
-      filteredState[checkValue] = value;
+      let filteredState
+      if(name === 'zip'){
+        filteredState = value
+      }else{
+        filteredState = this.state.searchQuery[name]
+        filteredState[checkValue] = value
+      }
       this.setState((prevState,props) => {
       return {
           searchQuery: Object.assign({}, prevState.searchQuery, {[name]: filteredState })
@@ -156,15 +173,20 @@ class CorporatePage extends React.Component {
         height:[false,false,false,false],
         weight:[false,false,false,false],
         income:[false,false,false,false],
-        age:[false,false,false,false]
+        age:[false,false,false,false],
+        zip: ''
       }
     })
   }
 
   isValid(arr) {
-    return arr.find((el) =>{
-      return el === true
-    })
+    if(typeof(arr === 'string')){
+       return arr !== ''
+    }else{
+      return arr.find((el) =>{
+        return el === true
+      })
+    }
   }
 
   handleSubmit(e, destination) {
@@ -184,7 +206,7 @@ class CorporatePage extends React.Component {
       case 'searchUsers':
         urel = '/api/biz/search'
         let searchQuery = this.state.searchQuery
-        let dataCheck = this.isValid([this.isValid(searchQuery.height),this.isValid(searchQuery.weight),this.isValid(searchQuery.income),this.isValid(searchQuery.age)])
+        let dataCheck = this.isValid([this.isValid(searchQuery.height),this.isValid(searchQuery.weight),this.isValid(searchQuery.income),this.isValid(searchQuery.age), this.isValid(searchQuery.zipCode)])
         data = dataCheck ? this.state.searchQuery : false
         method = 'POST'
         break
@@ -272,6 +294,17 @@ class CorporatePage extends React.Component {
     })
     .catch(err => console.log(err))
   }
+  showUserDetails(user_id) {
+    fetch(`/api/client/${user_id}`)
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        userDetailsShown: true,
+        userInfo: res.client.user,
+        userInfoLoaded: true
+      })
+    })
+  }
 
   render() {
     return (
@@ -288,6 +321,11 @@ class CorporatePage extends React.Component {
                 groupsLoaded={this.state.groupsLoaded}
                 removeFromGroup={this.removeFromGroup}
                 deleteGroup={this.deleteGroup}
+                showUserDetails={this.showUserDetails}
+                userInfo={this.state.userInfo}
+                userInfoLoaded={this.state.userInfoLoaded}
+                shown={this.state.userDetailsShown}
+                hideUserDetails={this.hideUserDetails}
               />
               <CreateGroup
                 newUser={this.state.newUser}
