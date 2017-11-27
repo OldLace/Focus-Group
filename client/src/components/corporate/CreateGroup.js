@@ -1,8 +1,9 @@
 import React from 'react'
 
-function BizUsers(props){
+function CreateGroup(props){
   return (
     <div className="biz-users">
+      <h3>Create a New Group</h3>
       <form onSubmit={(e) => {props.handleSubmit(e, 'groups')}}>
         <input
           type="text"
@@ -17,4 +18,4 @@ function BizUsers(props){
   )
 }
 
-export default BizUsers
+export default CreateGroup
