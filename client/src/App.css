@@ -202,6 +202,7 @@ label {
   border-radius: 3px;
 }
 /*==============================*/
+
 /*==========Overscroll Fix=======*/
 body {
   height: 100%;
@@ -209,7 +210,30 @@ body {
   /* font-family: 'Lobster', cursive; */
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-
-
 }
+/*==============================*/
+
+/*=========Focus Groups=========*/
+.focus-group {
+  margin: 10px;
+  background-color: grey;
+  display: inline-block;
+}
+
+.focus-group li {
+  background-color: white;
+  border:1px solid black;
+  margin-bottom: 3px;
+  padding:3px;
+}
+
+.focus-group ul {
+  margin: 10px;
+}
+
+.focus-group-title {
+  background-color: yellow;
+}
+/*==============================*/
+
 

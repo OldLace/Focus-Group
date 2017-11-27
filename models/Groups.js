@@ -22,9 +22,28 @@ Groups.addToGroup = (group) => {
 
 Groups.showAll = (id) => {
   return db.query(`
-  SELECT * FROM groups
-  WHERE biz_id = $1
+  SELECT groups.*, users.*
+  FROM groups
+  JOIN users ON users.id = groups.user_id
+  WHERE groups.biz_id = $1
   `,[id]);
+}
+
+Groups.removeFromGroup = (groupMember) => {
+  return db.none(`
+    DELETE FROM groups
+    WHERE group_name = $1
+    AND user_id = $2
+    AND biz_id = $3
+  `, [groupMember.group_name, groupMember.user_id, groupMember.biz_id])
+}
+
+Groups.destroyGroup = (group) => {
+  return db.none(`
+    DELETE FROM groups
+    WHERE group_name = $1
+    AND biz_id = $2
+  `, [group.group_name, group.biz_id])
 }
 
 module.exports = Groups;

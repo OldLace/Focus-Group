@@ -3,7 +3,7 @@ import React from 'react'
 import BizInfo from './BizInfo'
 import BizForm from './BizForm'
 import SearchUsers from './SearchUsers'
-import BizUsers from './BizUsers'
+import CreateGroup from './CreateGroup'
 import BizShowGroups from './BizShowGroups'
 
 const query = {
@@ -35,6 +35,9 @@ class CorporatePage extends React.Component {
     this.clearAll = this.clearAll.bind(this)
     this.userHandleInputChange = this.userHandleInputChange.bind(this)
     this.addToGroup = this.addToGroup.bind(this)
+    this.removeFromGroup = this.removeFromGroup.bind(this)
+    this.fetchGroups = this.fetchGroups.bind(this)
+    this.deleteGroup = this.deleteGroup.bind(this)
   }
 
   componentDidMount() {
@@ -49,7 +52,10 @@ class CorporatePage extends React.Component {
         console.log(res.biz)
       }
     })
-    .then(() => {
+    .then(this.fetchGroups())
+  }
+
+  fetchGroups() {
       fetch(`api/groups/${this.state.user.id}`)
         .then(res => res.json())
         .then(res => {
@@ -58,8 +64,7 @@ class CorporatePage extends React.Component {
             groupsLoaded: true
           })
         })
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
   addToGroup(id, name) {
@@ -78,8 +83,36 @@ class CorporatePage extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      this.setState({
+        groups: res.groups.groups,
+        groupsLoaded: true
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
+  removeFromGroup(biz_id, user_id, group_name) {
+    fetch(`/api/groups/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        biz_id: biz_id,
+        user_id: user_id,
+        group_name: group_name
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+        this.setState({
+          groups: res.groups.groups,
+          groupsLoaded: true
+        })
+      })
+    .catch(err => console.log(err))
   }
 
   userHandleInputChange(e) {
@@ -174,6 +207,12 @@ class CorporatePage extends React.Component {
     .then(res => res.json())
     .then(res => {
       switch(destination) {
+        case 'groups':
+          this.setState({
+            groups: res.groups.groups,
+            groupsLoaded: true
+          })
+          break
         case 'bizDetails':
           this.setState({
             bizDetails: res.biz.biz,
@@ -213,6 +252,27 @@ class CorporatePage extends React.Component {
     }
   }
 
+  deleteGroup(groupname) {
+    fetch(`/api/groups/${groupname}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        biz_id: this.state.user.id
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        groups: res.groups.groups,
+        groupsLoaded: true
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="biz-page">
@@ -226,8 +286,10 @@ class CorporatePage extends React.Component {
               <BizShowGroups
                 groups={this.state.groups}
                 groupsLoaded={this.state.groupsLoaded}
+                removeFromGroup={this.removeFromGroup}
+                deleteGroup={this.deleteGroup}
               />
-              <BizUsers
+              <CreateGroup
                 newUser={this.state.newUser}
                 handleSubmit={this.handleSubmit}
                 userHandleInputChange={this.userHandleInputChange}

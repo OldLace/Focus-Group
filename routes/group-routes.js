@@ -1,10 +1,11 @@
 const express = require('express');
 const groupRoutes = express.Router();
 
-const bizController = require('../controllers/bizprofile-controller');
+const groupsController = require('../controllers/groups-controller');
 
-groupRoutes.post('/:id', bizController.addToGroup)
-groupRoutes.post('/', bizController.createGroup)
-groupRoutes.get('/:id', bizController.groupIndex)
-
+groupRoutes.post('/:id', groupsController.addToGroup)
+groupRoutes.post('/', groupsController.create)
+groupRoutes.get('/:id', groupsController.index)
+groupRoutes.delete('/', groupsController.removeFromGroup)
+groupRoutes.delete('/:id', groupsController.destroyGroup)
 module.exports = groupRoutes

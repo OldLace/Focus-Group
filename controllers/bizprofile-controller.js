@@ -67,43 +67,4 @@ bizProfileController.delete = (req, res, next) => {
     }).catch(next);
 };
 
-bizProfileController.createGroup = (req,res,next) => {
-  Group.createGroup(req.body.name, req.user.id)
-  .then(group => {
-    res.json({
-      message: 'Group created successfully!',
-      group: { group }
-    })
-  }).catch(next)
-}
-
-bizProfileController.groupIndex = (req, res, next) => {
-
-    Group.showAll(req.params.id)
-      .then(groups => {
-        res.json({
-          message: 'ok',
-          groups: { groups }
-        })
-      }).catch(next)
-
-}
-
-bizProfileController.addToGroup = (req, res, next) => {
-  console.log('biz_id: ',req.body.biz_id)
-  console.log('group_name: ',req.body.group_name)
-
-  Group.addToGroup({
-    biz_id: req.body.biz_id,
-    user_id: req.params.id,
-    group_name: req.body.group_name
-  })
-  .then(groupMember => {
-    res.json({
-      message: 'User successfully added to group.',
-      groupMember: { groupMember }
-    })
-  }).catch(next)
-}
-
 module.exports = bizProfileController;
