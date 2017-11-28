@@ -23,7 +23,7 @@ function BizShowGroups(props) {
             <div key={el} className="focus-group">
               <div className="focus-group-title">{el}
                 <button
-                  className="remove-from-group"
+                  className="remove-from-group, hidebutton"
                   title="Delete this group"
                   onClick={(event) => { props.deleteGroup(el)}}
                 >X</button>
@@ -33,12 +33,13 @@ function BizShowGroups(props) {
                     if(item.group_name === el && item.biz_id !== item.user_id) {//Ignore group members who have a user id === biz_id because they are the creator
                       return <li key={el.id}>{item.username}
                                 <button
-                                  className="user-details"
+                                  className="user-details, hidebutton"
                                   title="User details"
                                   onClick={(event) => {props.showUserDetails(item.user_id)}}
                                 >Info</button>
                                 <button
-                                  className="remove-from-group"
+                                  className="remove-from-group, hidebutton"
+
                                   title="remove from group"
                                   onClick={(event) => { props.removeFromGroup(item.biz_id, item.user_id, item.group_name) }}
                                 >X</button>

@@ -148,6 +148,7 @@ label {
 
 }
 
+
 /*=======User Info==============*/
 
 .user-info {
@@ -176,6 +177,10 @@ label {
 
 .client-details-wrap {
   display: flex;
+}
+
+.hidebutton:hover {
+  background-color: #ffe7a3;
 }
 
 .photo {
@@ -326,6 +331,12 @@ label {
   flex: 1;
 }
 
+.client-details {
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+
 /*==============================*/
 
 /*==============Biz Page Right================*/
@@ -373,7 +384,8 @@ label {
 }
 
 .buttondiv {
-  margin-left: 550px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .userthings {
