@@ -6,11 +6,13 @@
 
 ## Concept:
 
-The purpose of this app is to connect businesses with users who would like to participate in targeted information gathering exericses (eg: surveys) for monetary compensation. A React application with an Express backend. The app will have CRUD functionality to store, retrieve, and manipulate user data.
+The purpose of this application is to connect businesses with users who wish to participate in targeted information gathering exericses (eg: surveys) for monetary compensation. 
 
-## Features:
+The application is built with React featuring an Express backend. The app will have CRUD functionality to store, retrieve, and manipulate user data in a SQL database.
 
-*   The app will have authtenication for both business representatives and the targeted participants.
+## Key Features:
+
+*   Authentication for both business representatives and the targeted participants.
 *   Once logged in, the business reps will have the ability to search through the user data in order to isolate the desired demographic.
 *   Business users will also be able to monitor their ongoing information gathering campaigns. They will be able to create\start new campaigns and end a campaign.
 *   Detailed information for campaigns will also be available via the app.
@@ -115,21 +117,27 @@ _User_
 ## Phases of completion:
 
 #### Phase 1 
-  -Build out backend file structure
-  -Build out frontend file structure
-  -Create DB migrations and seed files
+  *	Build out backend file structure
+  *	Build out frontend file structure
+  *	Create DB migrations and seed files
+
 #### Phase 2
-  -Fill out backend skeleton code 
-  -Fill out frontend skeleton code
-  -authentication
+  *	Fill out backend skeleton code 
+  *	Fill out frontend skeleton code
+  *	Authentication
+
 #### Phase 3
-  -Controller + models
-  -Frontend auth and stateless components
-  -app.js and server.js
- #### Phase 4
-  -Forms and styling
-  -Controller + models is probably a multi-day task
-  -app.js + server.js is probably a multi-day task
+  *	Controller + models
+  *	Frontend authentication and stateless components
+  *	App.js and Server.js
+  
+  
+#### Phase 4
+ *	Forms and styling
+ * Controller + models is probably a multi-day task
+ * App.js + server.js is probably a multi-day task
+
+  
 #### Phase 5
   -TBD: bonuses (corporate creating campaign/focusgroup content, data visualizations, adding a ‘seed’ task for users to complete)
 </article>
@@ -145,16 +153,22 @@ Originally, [this site](https://identitydesigned.com/bosphorus/) was used as a g
 The application serves as a proof-of-concept of a potential professional service for businesses and their clients to connect. Therefore it was styled in such a way to reflect this goal.
 
 And with that in mind, other points of interest include:
-      -     Flexbox to manipulate the elements on both the client\user and business sides of the application 
-      -     Black, white, as well as, various shades of grey and teal were used for the sleek and professional color scheme
-      -     Buttons that highlight on hover for improved usability
-        
+
+*	Flexbox to manipulate the elements on both the client\user and business sides of the application 
+
+*	Black, white, as well as, various shades of grey and teal were used in order to bring an aura of professionalism to the style
+
+*	Buttons that highlight on hover for improved usability
+
+In addition, there's a plethora of cosmetic touches, which add to the overall feel of the application.  
+        	
 <article>
 
 ## Links and resources:
 
 [Faker:](https://www.npmjs.com/package/faker) NPM Package for database dummy user data
-[Font Awesome](http://fontawesome.io/) for a navbar menu icon
+
+[Font Awesome:](http://fontawesome.io/) for a navbar menu icon
 
 </article>
 
