@@ -19,6 +19,7 @@ ul {
 
 .nodisplay {
   display:none;
+  flex: 1;
 }
 /*=====Persistent static navbar=====*/
 header {
@@ -287,8 +288,14 @@ label {
 
 .show-groups {
   display: flex;
-  flex-direction: column;
+  max-height: 400px;
   overflow-y: scroll;
+}
+
+.focus-group-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .focus-group {
@@ -314,6 +321,11 @@ label {
   background-color: #5CC4C6;
   font-size: 20px;
 }
+
+.client-details-container {
+  flex: 1;
+}
+
 /*==============================*/
 
 /*==============Biz Page Right================*/
