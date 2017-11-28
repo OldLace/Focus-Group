@@ -20,7 +20,9 @@ class ClientPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`api/client/${this.state.user.id}`)
+    fetch(`api/client/${this.state.user.id}`,{
+      credentials: 'include'
+    })
     .then(res => res.json())
     .then(res => {
       if(res.client.user){
