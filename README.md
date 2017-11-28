@@ -1,5 +1,5 @@
 # Focus Group App / Corporate Group Management
-
+Developed by: [Dylan](https://github.com/dylonion), [Kareem](https://github.com/kareemdjames), and [Paul](https://www.github.com/OldLace 
 <main>
 
 <article>
@@ -8,7 +8,7 @@
 
 The purpose of this application is to connect businesses with users who wish to participate in targeted information gathering exericses (eg: surveys) for monetary compensation. 
 
-The application is built with React featuring an Express backend. The app will have CRUD functionality to store, retrieve, and manipulate user data in a SQL database.
+The application is built with React and features an Express backend. The app will have CRUD functionality to store, retrieve, and manipulate user data in a SQL database.
 
 ## Key Features:
 
@@ -164,10 +164,11 @@ In addition, there's a plethora of cosmetic touches, which add to the overall fe
         	
 <article>
 
-## Links and resources:
-
+## Built with the Following Technologies & Resources:
+[React](https://reactjs.org/)
+[Express](https://expressjs.com/)
+[PostgreSQL](https://www.postgresql.org/)
 [Faker:](https://www.npmjs.com/package/faker) NPM Package for database dummy user data
-
 [Font Awesome:](http://fontawesome.io/) for a navbar menu icon
 
 </article>
