@@ -1,3 +1,10 @@
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+
 .App {
   text-align: center;
 }
@@ -34,6 +41,9 @@ footer {
   background-color: black;
   color:white;
   padding: 10px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 .header-dropdown {
   position: absolute;
@@ -219,84 +229,55 @@ label {
   text-align: left;
 }
 
-/*==============================*/
+/*==============Biz Page================*/
 
+.biz-page {
+  display: flex;
+}
+
+/*==============Biz Page Left================*/
 .business-left {
-  text-align: left;
-  margin-left: 100px;
+  flex: 1;
 }
 
 .biz-info {
-  display: inline-block;
-  padding: 25px;
-  background-color: #cecece;
-  margin-top: 50px;
-}
-
-.business-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   text-align: left;
-  margin:20px;
-  background-color: white;
-  display: inline-block;
-  border-radius: 3px;
+  /*background-color: #cecece;*/
+  background-color: lightsteelblue;
+  border-radius: 4px;
+  box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);
 }
 
-.search-form {
-  color: white;
-  padding:20px;
-}
-
-.search-form label {
-  text-align: left;
-  border: 1px solid black;
-  padding: 3px;
+.biz-info div {
   margin: 5px;
-  border-radius: 3px;
-  background-color: white;
-  cursor: pointer;
-  color: black;
 }
 
-/*==========Search Results=======*/
-.search-results {
-  max-height: 300px;
-  overflow-y: scroll;
-  /* margin-bottom: 40px; */
-  background-color: #cacaca;
-
+.biz-account-details {
+  text-align: center;
 }
 
-.search-results li {
-  padding: 5px;
-  background-color: #ffdb76;
-  margin:5px;
-  border: 1px solid black;
-  cursor: pointer;
+.biz-details-wrap {
+  display: flex;
 }
 
-.search-results li:hover {
-  background-color: #ffe7a3;
+.biz-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.search-errorfield {
-  margin:10px;
-  padding: 5px;
-  background-color: #ffa7a7;
-  border:1px solid red;
-  border-radius: 3px;
-}
-/*==============================*/
-
-/*==========Body & Font Adjustments=======*/
-body {
-  height: 100%;
-  overflow: hidden;
-  /* font-family: 'Lobster', cursive; */
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-}
-/*==============================*/
 
 /*=========Focus Groups=========*/
+
+.show-groups {
+  display: flex;
+  flex-direction: column;
+}
+
 .focus-group {
   margin: 10px;
   background-color: grey;
@@ -316,34 +297,23 @@ body {
 
 .focus-group-title {
   background-color: yellow;
+  font-size: 20px;
 }
 /*==============================*/
 
-.search-form {
-box-shadow: 0 10px 6px 6px
+/*==============Biz Page Right================*/
+
+.business-right {
+  flex: 1;
+  text-align: left;
+  background-color: white;
+  display: inline-block;
+  border-radius: 3px;
 }
-label {
-  color: black;
-}
-.spanpush {
-  width: 50px;
-}
-.buttondiv {
-  margin-left: 550px;
-}
-.userthings {
-  display: flex;
-}
-.search-category span :hover {
-  background-color: lightblue;
-}
-/*==============================*/
-/*====User Search Box=========*/
+
 .boxy {
   background: lightslategray;
-  position: relative;
   font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Lobster', cursive; */
   font-weight: 300;
   border-radius: 4px;
   box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);
@@ -351,12 +321,65 @@ label {
   left: 250px;
 }
 
-/*==============================*/
-/*====Business Info Box=========*/
-.biz-info {
-  background-color: lightsteelblue;
-  border-radius: 4px;
-  box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);
+/*==========Search Results=======*/
+
+.search-form {
+  color: white;
+  padding:20px;
+  box-shadow: 0 10px 6px 6px
 }
 
-/* biz-users */
+.search-form label {
+  text-align: left;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 3px;
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}
+
+.spanpush {
+  width: 50px;
+}
+
+.buttondiv {
+  margin-left: 550px;
+}
+
+.userthings {
+  display: flex;
+}
+
+.search-category span :hover {
+  background-color: lightblue;
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: scroll;
+  /* margin-bottom: 40px; */
+  background-color: #cacaca;
+}
+
+.search-results li {
+  padding: 5px;
+  background-color: #ffdb76;
+  margin:5px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #ffe7a3;
+}
+
+.search-errorfield {
+  margin:10px;
+  padding: 5px;
+  background-color: #ffa7a7;
+  border:1px solid red;
+  border-radius: 3px;
+}
+/*==============================*/
