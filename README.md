@@ -1,5 +1,5 @@
 # Focus Group App / Corporate Group Management
-Developed by: [Dylan](https://github.com/dylonion), [Kareem](https://github.com/kareemdjames), and [Paul](https://www.github.com/OldLace 
+Developed by: [Dylan](https://github.com/dylonion), [Kareem](https://github.com/kareemdjames), and [Paul](https://www.github.com/OldLace) 
 <main>
 
 <article>
