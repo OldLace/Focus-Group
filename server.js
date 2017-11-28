@@ -34,7 +34,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req,res) => {
-  res.send('Hello Kareem! This Works');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const authRoutes = require('./routes/auth-routes');
