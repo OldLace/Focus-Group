@@ -121,7 +121,7 @@ _User_
 #### Phase 2
   -Fill out backend skeleton code 
   -Fill out frontend skeleton code
-  -Copypasta auth
+  -authentication
 #### Phase 3
   -Controller + models
   -Frontend auth and stateless components
@@ -145,9 +145,9 @@ Originally, [this site](https://identitydesigned.com/bosphorus/) was used as a g
 The application serves as a proof-of-concept of a potential professional service for businesses and their clients to connect. Therefore it was styled in such a way to reflect this goal.
 
 And with that in mind, other points of interest include:
-      - Flexbox to manipulate the elements on both the client\user and business sides of the application 
-      - Black, white, as well as, various shades of grey and teal were used for the sleek and professional color scheme
-      - Buttons that highlight on hover for improved usability
+      * Flexbox to manipulate the elements on both the client\user and business sides of the application 
+      * Black, white, as well as, various shades of grey and teal were used for the sleek and professional color scheme
+      * Buttons that highlight on hover for improved usability
         
 <article>
 
