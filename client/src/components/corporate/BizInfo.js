@@ -17,7 +17,7 @@ function BizInfo(props) {
           </ul>
         </div>
         <div className="edit-button">
-          <button onClick={props.showEdit}>Profile Settings</button>
+          <button className="hidebutton" onClick={props.showEdit}>Profile Settings</button>
         </div>
       </div>
     </div>
