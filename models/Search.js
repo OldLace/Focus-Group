@@ -55,10 +55,10 @@ UserSearch.buildString = (arr, type) => {
     compareArray = ['user_profiles.height BETWEEN 18 AND 24', 'user_profiles.height BETWEEN 25 AND 34', 'user_profiles.height BETWEEN 35 AND 44','user_profiles.height > 44']
     break;
   case 'weight':
-    compareArray = ['user_profiles.weight < 100', 'user_profiles.weight BETWEEN 101-150', 'user_profiles.weight BETWEEN 151-249', 'user_profiles.weight > 250']
+    compareArray = ['user_profiles.weight < 100', 'user_profiles.weight BETWEEN 101 AND 150', 'user_profiles.weight BETWEEN 151 AND 249', 'user_profiles.weight > 250']
     break;
   case 'income':
-    compareArray = ['user_profiles.income < 35000', 'user_profiles.income BETWEEN 35001-50000', 'user_profiles.income BETWEEN 50001-100000','user_profiles.income > 100000']
+    compareArray = ['user_profiles.income < 35000', 'user_profiles.income BETWEEN 35001 AND 50000', 'user_profiles.income BETWEEN 50001 AND 100000','user_profiles.income > 100000']
     break
   default:
     throw new Error('Array type not found')
@@ -72,6 +72,15 @@ UserSearch.buildString = (arr, type) => {
   }
   console.log('returnArray: ', returnArray)
   return returnArray.join(' OR ')
+}
+
+UserSearch.preSearch = (filters) => {
+  const whereClause = UserSearch.buildWhere(filters);
+  return db.manyOrNone(`
+    SELECT count(users.id) FROM user_profiles
+    JOIN users on users.id = user_profiles.user_id
+    WHERE ${whereClause}
+  `)
 }
 
 module.exports = UserSearch;

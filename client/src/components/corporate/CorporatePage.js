@@ -34,7 +34,9 @@ class CorporatePage extends React.Component {
       userInfo: {},
       userInfoLoaded: false,
       userDetailsShown: false,
-      editDetails: false
+      editDetails: false,
+      preSearchCount: null,
+      preSearchLoaded: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -189,7 +191,8 @@ class CorporatePage extends React.Component {
         sex:[false,false],
         age:[false,false,false,false],
         zip: ''
-      }
+      },
+      preSearchLoaded: false
     })
   }//Clear all fields button used in the search form - resets all to empty.
 
@@ -207,6 +210,14 @@ class CorporatePage extends React.Component {
     e.preventDefault()
     let urel, data, method
     switch(destination) {//Sets which API call to use and associated data to act upon dependent upon the destination argument
+      case 'preSearch':
+        urel = '/api/biz/presearch'
+        data = this.state.searchQuery
+        method = 'POST'
+        this.setState({
+          preSearchLoaded: false
+        })
+        break
       case 'groups':
         urel= '/api/groups'
         data= this.state.newUser
@@ -248,6 +259,12 @@ class CorporatePage extends React.Component {
     .then(res => res.json())
     .then(res => {
       switch(destination) {//What to do with the api call results according to the active form specified
+        case 'preSearch':
+          this.setState({
+            preSearchCount: res.results.filters[0].count,
+            preSearchLoaded: true
+          })
+          break
         case 'groups':
           this.setState({
             groups: res.groups.groups,
@@ -321,6 +338,7 @@ class CorporatePage extends React.Component {
       .catch(err => console.log(err))
     }
   }//Delete a group - called by clicking the X next to a group
+
   showEdit() {
     this.setState({
       editDetails: !this.state.editDetails
@@ -389,6 +407,8 @@ class CorporatePage extends React.Component {
             clearAll={this.clearAll}
             searchResultsInvalid={this.state.searchResultsInvalid}
             addToGroup={this.addToGroup}
+            preSearchLoaded={this.state.preSearchLoaded}
+            preSearchCount={this.state.preSearchCount}
           />
         </div>
       </div>

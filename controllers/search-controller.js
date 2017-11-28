@@ -12,4 +12,14 @@ searchController.index = (req, res, next) => {
     }).catch(next)
 };
 
+searchController.preSearch = (req, res, next) => {
+  Search.preSearch(req.body)
+    .then(filters => {
+      res.json({
+        message: 'ok',
+        results: { filters }
+      })
+    })
+}
+
 module.exports = searchController;
