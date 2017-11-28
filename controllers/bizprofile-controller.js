@@ -50,7 +50,7 @@ bizProfileController.update = (req, res, next) => {
     zip: req.body.zip,
     biz_description: req.body.biz_description,
     biz_url: req.body.biz_url,
-  }, req.params.id).then(biz => {
+  }, req.user.id).then(biz => {
     res.json({
       message: 'Business updated successfully!',
       biz: { biz },

@@ -36,11 +36,10 @@ ClientProfile.update = (ClientProfile, id) => {
   street_address = $6,
   city = $7,
   state = $8,
-  zip = $9,
-  user_id = $10,
-  WHERE id = $11
+  zip = $9
+  WHERE user_id = $10
   RETURNING *
-  `) [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, id]
+  `, [ClientProfile.age, ClientProfile.sex, ClientProfile.height, ClientProfile.weight, ClientProfile.income, ClientProfile.street_address, ClientProfile.city, ClientProfile.state, ClientProfile.zip, id])
 };
 
 ClientProfile.destroy = (id) => {

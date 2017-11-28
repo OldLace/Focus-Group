@@ -9,11 +9,15 @@ function BizInfo(props) {
       <div className="biz-details-wrap">
         <div className="photo"></div>
         <div className="biz-details">
-          <p>Business Name: {props.bizDetails.bizname}</p>
-          <p>Street Address: {props.bizDetails.street_address}</p>
+          <ul>
+            <li>Business Name: {props.bizDetails.bizname}</li>
+            <li>Street Address: {props.bizDetails.street_address} {props.bizDetails.city}, {props.bizDetails.state} {props.bizDetails.zip}</li>
+            <li>Website: <a href="{props.bizDetails.biz_url}">{props.bizDetails.biz_url}</a></li>
+            <li>Description: {props.bizDetails.biz_description}</li>
+          </ul>
         </div>
         <div className="edit-button">
-          <button>Profile Settings</button>
+          <button onClick={props.showEdit}>Profile Settings</button>
         </div>
       </div>
     </div>

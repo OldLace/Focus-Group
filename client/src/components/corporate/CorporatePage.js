@@ -33,7 +33,8 @@ class CorporatePage extends React.Component {
       groupsLoaded: false,
       userInfo: {},
       userInfoLoaded: false,
-      userDetailsShown: false
+      userDetailsShown: false,
+      editDetails: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -46,6 +47,7 @@ class CorporatePage extends React.Component {
     this.showUserDetails = this.showUserDetails.bind(this)
     this.hideUserDetails = this.hideUserDetails.bind(this)
     this.promptCheck = this.promptCheck.bind(this)
+    this.showEdit = this.showEdit.bind(this)
   }
 
   componentDidMount() {
@@ -215,6 +217,11 @@ class CorporatePage extends React.Component {
         data = this.state.bizDetails
         method = 'POST'
         break
+      case 'edit':
+        urel = '/api/biz'
+        data = this.state.bizDetails
+        method = 'PUT'
+        break
       case 'searchUsers':
         urel = '/api/biz/search'
         let searchQuery = this.state.searchQuery
@@ -250,9 +257,16 @@ class CorporatePage extends React.Component {
         case 'bizDetails':
           this.setState({
             bizDetails: res.biz.biz,
-            apiDataLoaded: true
+            apiDataLoaded: true,
+            editDetails: false
           })
           break
+        case 'edit':
+          this.setState({
+            bizDetails: res.biz.biz,
+            apiDataLoaded: true,
+            editDetails: false
+          })
         case 'searchUsers':
           if(res.results&&res.results.filters&&res.results.filters.length){//Just typechecking because the backend needs work- result data structure can be inconsistent.
             this.setState({
@@ -307,6 +321,11 @@ class CorporatePage extends React.Component {
       .catch(err => console.log(err))
     }
   }//Delete a group - called by clicking the X next to a group
+  showEdit() {
+    this.setState({
+      editDetails: !this.state.editDetails
+    })
+  }
 
   showUserDetails(user_id) {
     fetch(`/api/client/${user_id}`)
@@ -324,11 +343,12 @@ class CorporatePage extends React.Component {
     return (
       <div className="biz-page">
         <div className="business-left">
-          {this.state.apiDataLoaded ?
+          {this.state.apiDataLoaded && !this.state.editDetails ?
             <div>
               <BizInfo
                 user={this.state.user}
                 bizDetails={this.state.bizDetails}
+                showEdit={this.showEdit}
               />
               <BizShowGroups
                 groups={this.state.groups}
@@ -352,6 +372,8 @@ class CorporatePage extends React.Component {
               handleSubmit={this.handleSubmit}
               handleInputChange={this.handleInputChange}
               bizDetails={this.state.bizDetails}
+              editDetails={this.state.editDetails}
+              showEdit={this.showEdit}
             />
           }
         </div>
