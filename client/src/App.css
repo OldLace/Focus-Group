@@ -139,6 +139,10 @@ label {
   cursor: pointer;
   color: #677eff;
 }
+
+.title {
+  margin-top: 45px;
+}
 /*============Client Page==================*/
 
 .client-page {
@@ -181,6 +185,15 @@ label {
 
 .hidebutton:hover {
   background-color: #ffe7a3;
+}
+#hidebutton {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+#hidebutton:hover {
+  background-color: #ffe7a3;
+
 }
 
 .photo {

@@ -10,8 +10,7 @@ function UserForm(props) {
   }
   return (
     <div className="UserDetails">
-      <h1>Update your account info</h1>
-      <button className={props.editDetails ? '' : 'nodisplay'} onClick={props.showEdit}>X</button>
+      <h1 className="title">Update your account info</h1>
       <form onSubmit={(e) => {props.handleSubmit(e, destination)}}>
         <input
           type="text"
@@ -92,7 +91,8 @@ function UserForm(props) {
           value={props.userDetails.zip ? props.userDetails.zip : ''}
           placeholder="Zipcode"
         />
-        <input type="submit" value="submit" />
+        <input size="12px" type="submit" value="Submit" />
+          <button size="12px" id="hidebutton" className={props.editDetails ? '' : 'nodisplay'} onClick={props.showEdit}>Back</button>
       </form>
     </div>
   )
