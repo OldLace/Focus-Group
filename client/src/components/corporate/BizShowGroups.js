@@ -15,7 +15,9 @@ function BizShowGroups(props) {
     })//Iterate through groups to find all the unique group names and
       //push into a new array that represents groups rather than group members
     return (
+
       <div className="show-groups">
+        <div className="focus-group-wrap">
         {uniqueGroup.map((el) => {
           return (
             <div key={el} className="focus-group">
@@ -47,6 +49,7 @@ function BizShowGroups(props) {
             </div>
           )
         })}
+      </div>
         <ClientDetails
           userInfo={props.userInfo}
           userInfoLoaded={props.userInfoLoaded}

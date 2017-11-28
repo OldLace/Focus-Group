@@ -3,6 +3,7 @@ import React from 'react'
 function ClientDetails(props) {
   if(props.userInfoLoaded){
     return (
+      <div className="client-details-container">
       <div className={props.shown ? 'client-details' : 'nodisplay'}>
         <button onClick={props.hideUserDetails}>X</button>
         <ul>
@@ -14,6 +15,7 @@ function ClientDetails(props) {
           <li>Age: {props.userInfo.age}</li>
           <li>Income: {props.userInfo.income}</li>
         </ul>
+      </div>
       </div>
     )
   }else{
