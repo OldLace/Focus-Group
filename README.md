@@ -139,13 +139,22 @@ _User_
 ## Style guide:
 
 </article>
-https://identitydesigned.com/bosphorus/
 
+Originally, [this site](https://identitydesigned.com/bosphorus/) was used as a guideline for application styling. However, the site was taken offline mid-project.
+
+The application serves as a proof-of-concept of a potential professional service for businesses and their clients to connect. Therefore it was styled in such a way to reflect this goal.
+
+And with that in mind, other points of interest include:
+      - Flexbox to manipulate the elements on both the client\user and business sides of the application 
+      - Black, white, as well as, various shades of grey and teal were used for the sleek and professional color scheme
+      - Buttons that highlight on hover for improved usability
+        
 <article>
 
 ## Links and resources:
 
-[Faker: NPM Package for dummy user data](https://www.npmjs.com/package/faker)
+[Faker:](https://www.npmjs.com/package/faker) NPM Package for database dummy user data
+[Font Awesome](http://fontawesome.io/) for a navbar menu icon
 
 </article>
 
