@@ -2,6 +2,7 @@ DROP TABLE campaigns_users;
 DROP TABLE campaigns;
 DROP TABLE biz_profiles;
 DROP TABLE user_profiles;
+DROP TABLE groups;
 DROP TABLE users;
 
 CREATE TABLE IF NOT EXISTS users (
