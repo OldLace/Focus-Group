@@ -16,7 +16,7 @@ function UserInfo(props) {
           <p>Zip: {props.userDetails.zip}</p>
         </div>
         <div className="edit-button">
-          <button>Profile Settings</button>
+          <button onClick={props.showEdit}>Profile Settings</button>
         </div>
       </div>
     </div>

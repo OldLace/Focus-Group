@@ -45,17 +45,20 @@ clientProfileController.create = (req, res, next) => {
 
 clientProfileController.update = (req, res, next) => {
   clientProfile.update({
-    bizname: req.body.bizname,
+    age: req.body.age,
+    sex: req.body.sex,
+    height: req.body.height,
+    weight: req.body.weight,
+    income: req.body.income,
     street_address: req.body.street_address,
     city: req.body.city,
     state: req.body.state,
-    zip: req.body.zip,
-    biz_description: req.body.biz_description,
-    biz_url: req.body.biz_url,
-  }, req.params.id).then(biz => {
+    zip: req.body.zip
+  }, req.user.id)
+    .then(biz => {
     res.json({
       message: 'User Profile updated successfully!',
-      client: { client },
+      client: { biz },
     });
   }).catch(next);
 };

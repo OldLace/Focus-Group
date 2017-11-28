@@ -11,7 +11,7 @@ bizRoutes.post('/', bizController.create);
 // bizRoutes.post('/groups/:id', bizController.addUser)
 
 bizRoutes.get('/:id', bizController.show);
-bizRoutes.put('/:id', bizController.update);
+bizRoutes.put('/', bizController.update);
 bizRoutes.delete('/:id', bizController.delete);
 
 module.exports = bizRoutes;

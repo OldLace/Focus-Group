@@ -1,10 +1,17 @@
 import React from 'react'
 
 function UserForm(props) {
+  let destination
+  if(props.editDetails){
+    destination = 'edit'
+  }else{
+    destination = 'bizDetails'
+  }
   return (
     <div className="UserDetails">
       <h1>Update your account info</h1>
-      <form onSubmit={props.handleSubmit}>
+      <button className={props.editDetails ? '' : 'nodisplay'} onClick={props.showEdit}>X</button>
+      <form onSubmit={(e) => {props.handleSubmit(e, destination)}}>
         <input
           type="text"
           onChange={props.handleInputChange}

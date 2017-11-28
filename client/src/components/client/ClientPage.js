@@ -11,10 +11,12 @@ class ClientPage extends React.Component {
     this.state = {
       user: this.props.user,
       userDetails: {},
-      apiDataLoaded: false
+      apiDataLoaded: false,
+      editDetails: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.showEdit = this.showEdit.bind(this)
   }
 
   componentDidMount() {
@@ -42,10 +44,16 @@ class ClientPage extends React.Component {
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, destination) {
     e.preventDefault()
+    let method
+    if(destination === 'create'){
+      method = 'POST'
+    }else{
+      method = 'PUT'
+    }
     fetch('/api/client', {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -56,25 +64,35 @@ class ClientPage extends React.Component {
     .then(res => {
       this.setState({
         userDetails: res.client.biz,
-        apiDataLoaded: true
+        apiDataLoaded: true,
+        editDetails: false
       })
     })
     .catch(err => console.log(err))
   }
 
+  showEdit() {
+    this.setState({
+      editDetails: !this.state.editDetails
+    })
+  }
+
   render() {
     return (
       <div className="client-page">
-        {this.state.apiDataLoaded ?
+        {this.state.apiDataLoaded && !this.state.editDetails ?
           <UserInfo
             user={this.state.user}
             userDetails={this.state.userDetails}
+            showEdit={this.showEdit}
           />
           :
           <UserForm
             handleSubmit={this.handleSubmit}
             handleInputChange={this.handleInputChange}
             userDetails={this.state.userDetails}
+            editDetails={this.state.editDetails}
+            showEdit={this.showEdit}
           />
         }
         <ClientTasks />

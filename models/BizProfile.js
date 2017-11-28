@@ -32,10 +32,10 @@ BizProfile.update = (bizProfile, id) => {
   state = $4,
   zip = $5,
   biz_description = $6,
-  biz_url = $7,
-  WHERE id = $8
+  biz_url = $7
+  WHERE biz_id = $8
   RETURNING *
-  `,  [bizProfile.bizname, bizProfile.street_address, bizprofile.city, bizprofile.state, bizprofile.zip, bizprofile.biz_description, bizprofile.biz_url, id]);
+  `,  [bizProfile.bizname, bizProfile.street_address, bizProfile.city, bizProfile.state, bizProfile.zip, bizProfile.biz_description, bizProfile.biz_url, id]);
 };
 
 BizProfile.destroy = (id) => {
