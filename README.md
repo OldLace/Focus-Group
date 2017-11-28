@@ -140,11 +140,12 @@ _User_
 
 </article>
 https://identitydesigned.com/bosphorus/
+
 <article>
 
 ## Links and resources:
 
-Faker: NPM Package for dummy user data
+[Faker: NPM Package for dummy user data](https://www.npmjs.com/package/faker)
 
 </article>
 
