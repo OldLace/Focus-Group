@@ -379,11 +379,6 @@ class CorporatePage extends React.Component {
                 shown={this.state.userDetailsShown}
                 hideUserDetails={this.hideUserDetails}
               />
-              <CreateGroup
-                newUser={this.state.newUser}
-                handleSubmit={this.handleSubmit}
-                userHandleInputChange={this.userHandleInputChange}
-              />
             </div>
             :
             <BizForm
@@ -409,6 +404,11 @@ class CorporatePage extends React.Component {
             addToGroup={this.addToGroup}
             preSearchLoaded={this.state.preSearchLoaded}
             preSearchCount={this.state.preSearchCount}
+          />
+          <CreateGroup
+            newUser={this.state.newUser}
+            handleSubmit={this.handleSubmit}
+            userHandleInputChange={this.userHandleInputChange}
           />
         </div>
       </div>
