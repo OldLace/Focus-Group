@@ -1,18 +1,120 @@
 import React from 'react'
 
+function UserList(props) {
+  return (
+    <div className="results-list">
+      <ul>
+        {
+          props.searchResults.map((el)=> {
+            return <li key={el.username} onClick={(e)=>{props.renderClientView(e, el)}}>{el.firstname} {el.lastname}</li>
+          })
+        }
+      </ul>
+    </div>
+  )
+}
+
+function ClientView(props) {
+    if(!props.clientViewEnabled){
+      return (
+        <div className="client-profile">
+          <p>Click a user from the list to view details.</p>
+        </div>
+      )
+    }else{
+      let uniqueGroups = []
+      props.groups.map((el) => {
+        if(!uniqueGroups.find((item) => {
+            return item === el.group_name
+        })){
+          uniqueGroups.push(el.group_name)
+        }
+      })
+      return (
+        <div className="client-profile">
+          <h3>{props.client.username}</h3>
+          <div className="client-details">
+            <ul>
+              <li>Name: {props.client.firstname} {props.client.lastname}</li>
+              <li>Age: {props.client.age}</li>
+              <li>Height: {props.client.height}</li>
+              <li>Weight: {props.client.weight}</li>
+              <li>Income: {props.client.income}</li>
+              <li>Gender: {props.client.sex}</li>
+              <li>Address: {props.client.street_address} {props.client.city}, {props.client.state} {props.client.zip}</li>
+            </ul>
+          </div>
+          <div className="client-options">
+            <span>Add to group:</span>
+            <select value={props.selectValue} onChange={(e)=>{props.handleChange(e); props.addToGroup(e, props.client.user_id)}}>
+              <option value="0">---</option>
+              {uniqueGroups.map((el, index) => {
+                return (
+                  <option value={el}>{el}</option>
+                )
+              })}
+            </select>
+          </div>
+        </div>
+      )
+    }
+  }
+
+class SearchResults extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      clientView: {},
+      clientViewEnabled: false,
+      selectValue: 0
+    }
+    this.renderClientView = this.renderClientView.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  renderClientView(e, obj){
+    this.setState({
+      clientView: obj,
+      clientViewEnabled: true
+    })
+  }
+  handleChange(e) {
+    let value = e.target.value
+    this.setState({
+      selectValue: value
+    })
+  }
+  render() {
+    return (
+      <div className="search-results">
+        <UserList searchResults={this.props.searchResults} renderClientView={this.renderClientView} />
+        <ClientView
+          client={this.state.clientView}
+          clientViewEnabled={this.state.clientViewEnabled}
+          groups={this.props.groups}
+          addToGroup={this.props.addToGroup}
+          handleChange={this.handleChange}
+          selectValue={this.state.selectValue}
+        />
+      </div>
+    )
+  }
+}
+
+{/*
 class SearchResults extends React.Component {
   constructor(){
     super()
     this.state = {
       toggleViews: {
-        addBtn: false
+        addBtn: false,
+        clientView: {}
       }
     }
     this.toggleView = this.toggleView.bind(this)
   }
 
   toggleView(id, btnId) {
-    console.log(id)
     // console.log(name)
     let toggled
     if(this.state.toggleViews[id]){
@@ -62,6 +164,7 @@ class SearchResults extends React.Component {
               })}
             </ul>
           </div>
+          <div className="client-profile">
           <ul>
           {this.props.searchResults.map((el, index) => {
             return <li key={index}>
@@ -85,6 +188,6 @@ class SearchResults extends React.Component {
       )
     }
   }
-}
+}*/}
 
 export default SearchResults

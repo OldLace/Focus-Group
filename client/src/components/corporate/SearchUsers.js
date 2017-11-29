@@ -11,8 +11,10 @@ function SearchUsers(props) {
         <form onSubmit={(e)=>{props.handleSubmit(e,'searchUsers')}}>
           <div className="search-category">
             <span>Gender: </span>
-            <label className="search-label"><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
-            <label className="search-label"><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+            <span className="spanpush">
+              <label><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
+              <label><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+            </span>
           </div>
           <div className="search-category">
             <span>Height:</span>
@@ -44,17 +46,17 @@ function SearchUsers(props) {
           <div className="search-category">
             <span>Annual Income: </span>
             <span className="spanpush">
-            <label className="search-label"><input name="income" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'<'} $35,000</label>
-            <label className="search-label"><input name="income" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-$50,000</label>
-            <label className="search-label"><input name="income" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />50-$100,000</label>
-            <label className="search-label"><input name="income" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} $100,000</label>
+            <label><input name="income" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'<'} $35k</label>
+            <label><input name="income" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-$50k</label>
+            <label><input name="income" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />50-$100k</label>
+            <label><input name="income" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} $100k</label>
           </span>
           </div>
           <div className="search-category">
             <span>Zip Code:</span>
             <label><input name="zip" value={props.searchQuery ? props.searchQuery.zip : ''} onChange={props.handleInputChange} /></label>
           </div>
-          <div className={props.preSearchLoaded ? '' : 'nodisplay'}>
+          <div className={props.preSearchLoaded ? 'preview-count' : 'preview-count nodisplay'}>
             Number of results for this search: {props.preSearchCount}
           </div>
           <div className="buttondiv">

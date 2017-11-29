@@ -93,7 +93,6 @@ class App extends Component {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(res => {
-        console.log(res);
         if(res.error){
           if(res.error.code === 23505){
             this.setState({

@@ -2,7 +2,6 @@ import React from 'react'
 
 function UserForm(props) {
   let destination
-  console.log(props.editDetails)
   if(props.editDetails){
     destination = 'edit'
   }else{
