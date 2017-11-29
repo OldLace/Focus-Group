@@ -277,10 +277,8 @@ label {
   flex-direction: column;
   padding: 20px;
   text-align: left;
-  /*background-color: #cecece;*/
   background-color: #EBECEE;
   border-radius: 4px;
-  /*box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);*/
 }
 
 .biz-info div {
@@ -368,7 +366,6 @@ label {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   border-radius: 4px;
-  /*box-shadow: -11px 10px 13px 6px rgba(0,0,0,0.39);*/
   top: -350px;
   left: 250px;
 }
@@ -399,6 +396,11 @@ label {
 .buttondiv {
   display: flex;
   justify-content: space-between;
+}
+
+.buttondiv button {
+  font-size: 16px;
+  border: none;
 }
 
 .userthings {
