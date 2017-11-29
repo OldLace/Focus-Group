@@ -19,28 +19,28 @@ function SearchUsers(props) {
           <div className="search-category">
             <span>Height:</span>
           <span className="spanpush">
-            <label><input name="height" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />18"-24"</label>
-            <label><input name="height" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />25"-34"</label>
-            <label><input name="height" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35"-44"</label>
-            <label><input name="height" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />45"+</label>
+            <label className="search-label"><input name="height" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />18"-24"</label>
+            <label className="search-label"><input name="height" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />25"-34"</label>
+            <label className="search-label"><input name="height" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35"-44"</label>
+            <label className="search-label"><input name="height" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.height[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />45"+</label>
          </span>
           </div>
           <div className="search-category">
             <span>Weight:</span>
             <span className="spanpush">
-            <label><input name="weight" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{"<"} 100 lbs</label>
-            <label><input name="weight" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />101-150 lbs</label>
-            <label><input name="weight" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />151-249 lbs</label>
-            <label><input name="weight" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} 250 lbs</label>
+            <label className="search-label"><input name="weight" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{"<"} 100 lbs</label>
+            <label className="search-label"><input name="weight" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />101-150 lbs</label>
+            <label className="search-label"><input name="weight" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />151-249 lbs</label>
+            <label className="search-label"><input name="weight" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.weight[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} 250 lbs</label>
           </span>
           </div>
           <div className="search-category">
             <span>Age:</span>
             <span className="spanpush">
-            <label><input name="age" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />10-15 yrs</label>
-            <label><input name="age" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />25-34 yrs</label>
-            <label><input name="age" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-44 yrs</label>
-            <label><input name="age" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} 44 yrs</label>
+            <label className="search-label"><input name="age" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />10-15 yrs</label>
+            <label className="search-label"><input name="age" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />25-34 yrs</label>
+            <label className="search-label"><input name="age" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-44 yrs</label>
+            <label className="search-label"><input name="age" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.age[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} 44 yrs</label>
           </span>
           </div>
           <div className="search-category">
