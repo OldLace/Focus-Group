@@ -61,7 +61,6 @@ class CorporatePage extends React.Component {
           bizDetails: res.biz.biz,
           apiDataLoaded: true
         })
-        console.log(res.biz)
       }
     })
     .then(this.fetchGroups())
@@ -89,7 +88,8 @@ class CorporatePage extends React.Component {
       .catch(err => console.log(err))
   }//Get list of groups associated with a corporate account
 
-  addToGroup(id, name) {
+  addToGroup(e, id) {
+    let name = e.target.value;
     let check = this.state.groups.find((el) => {
       return el.user_id === id && el.group_name === name
     })
@@ -145,8 +145,6 @@ class CorporatePage extends React.Component {
   userHandleInputChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    console.log('name: ', name)
-    console.log('value: ', value)
     this.setState((prevState, props) => {
       return {
         newUser: Object.assign({}, prevState.newUser, {[name]: value})
@@ -182,7 +180,6 @@ class CorporatePage extends React.Component {
 
   clearAll(e) {
     e.preventDefault()
-    console.log('clearall fired')
     this.setState({
       searchQuery: {
         height:[false,false,false,false],
@@ -192,7 +189,8 @@ class CorporatePage extends React.Component {
         age:[false,false,false,false],
         zip: ''
       },
-      preSearchLoaded: false
+      preSearchLoaded: false,
+      searchResultsLoaded: false
     })
   }//Clear all fields button used in the search form - resets all to empty.
 

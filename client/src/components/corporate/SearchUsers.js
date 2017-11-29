@@ -44,10 +44,10 @@ function SearchUsers(props) {
           <div className="search-category">
             <span>Annual Income: </span>
             <span className="spanpush">
-            <label><input name="income" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'<'} $35,000</label>
-            <label><input name="income" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-$50,000</label>
-            <label><input name="income" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />50-$100,000</label>
-            <label><input name="income" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} $100,000</label>
+            <label><input name="income" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[0] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'<'} $35k</label>
+            <label><input name="income" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[1] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />35-$50k</label>
+            <label><input name="income" value="2" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[2] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />50-$100k</label>
+            <label><input name="income" value="3" type="checkbox" checked={props.searchQuery ? props.searchQuery.income[3] : false} onChange={(e) => {props.handleInputChange(e); props.handleSubmit(e, 'preSearch');}} />{'>'} $100k</label>
           </span>
           </div>
           <div className="search-category">

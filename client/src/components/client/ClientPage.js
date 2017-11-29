@@ -30,7 +30,6 @@ class ClientPage extends React.Component {
           userDetails: res.client.user,
           apiDataLoaded: true
         })
-        console.log(res.client.user)
       }
     })
     .catch(err => console.log(err))

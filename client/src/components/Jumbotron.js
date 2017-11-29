@@ -11,7 +11,6 @@ class Jumbotron extends React.Component {
     this.setAuthDisplay = this.setAuthDisplay.bind(this)
   }
   setAuthDisplay(){
-    console.log('authDisplay set')
     this.setState({
       authDisplay:!this.state.authDisplay
     })
