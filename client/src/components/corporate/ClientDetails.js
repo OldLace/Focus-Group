@@ -14,7 +14,6 @@ function ClientDetails(props) {
             <li>Age: {props.userInfo.age}</li>
             <li>Income: {props.userInfo.income}</li>
           </ul>
-            <button className="hidebutton" onClick={props.hideUserDetails}>X</button>
         </div>
       </div>
     )

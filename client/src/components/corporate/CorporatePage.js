@@ -90,6 +90,9 @@ class CorporatePage extends React.Component {
 
   addToGroup(e, id) {
     let name = e.target.value;
+    if(name == 0){
+      return;
+    }
     let check = this.state.groups.find((el) => {
       return el.user_id === id && el.group_name === name
     })

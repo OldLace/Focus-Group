@@ -4,6 +4,9 @@ body {
   font-weight: 300;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
 
 .App {
   text-align: center;
@@ -96,19 +99,27 @@ footer {
 .biz-form form {
   display: flex;
   flex-direction: column;
-  padding: 0 350px;
+}
+.loginform input {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
 }
 
+.biz-form input[type="text"] {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+.UserDetails form input {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
 form input {
-  margin-bottom: 15px;
   border:none;
   font-family: inherit;
   font-size: inherit;
-  padding:3px;
-  border-bottom: 1px solid black;
 }
 
-input[type='submit'] {
+input[type='submit'], .backBtn {
   border:none;
   background-color: whitesmoke;
   color: black;
@@ -120,6 +131,17 @@ input[type='submit']:hover {
   color: whitesmoke;
 }
 
+.backBtn {
+  font-size: inherit;
+  font-weight: inherit;
+  margin:10px 0;
+  font-family: inherit;
+}
+
+.backBtn:hover {
+  background-color: #4CAF50;
+  color: whitesmoke;
+}
 /* input[type='submit'], .search-form-button {
   border:none;
   background-color: #7dff7d;
@@ -342,12 +364,6 @@ label {
   flex: 1;
 }
 
-.client-details {
-  border: 2px solid black;
-  border-radius: 3px;
-}
-
-
 /*==============================*/
 
 /*==============Biz Page Right================*/
@@ -377,25 +393,27 @@ label {
   padding:20px;
   box-shadow: 0 10px 6px 6px
 }
+.userthings form {
+  width: 100%;
+}
 
 .search-form label {
-  text-align: left;
-  border: 1px solid black;
   padding: 3px;
-  margin: 5px;
+  margin: 3px;
   border-radius: 3px;
   background-color: white;
   cursor: pointer;
   color: black;
 }
 
-.spanpush {
-  width: 50px;
-}
-
 .buttondiv {
   display: flex;
   justify-content: space-between;
+  margin:10px 0;
+}
+
+.preview-count {
+  text-align: right;
 }
 
 .buttondiv button {
@@ -411,25 +429,66 @@ label {
   background-color: lightblue;
 }
 
+.search-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
 .search-results {
   max-height: 300px;
-  overflow-y: scroll;
   /* margin-bottom: 40px; */
   background-color: #cacaca;
+  display: flex;
 }
 
-.search-results li {
-  padding: 5px;
-  background-color: #ffdb76;
-  margin:5px;
-  border: 1px solid black;
+.results-list li {
+  padding:5px 20px 5px 5px;
   cursor: pointer;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+  transition: left .3s ease-out;
+  left:0;
+  color:black;
 }
 
-.search-results li:hover {
-  background-color: #ffe7a3;
+.results-list {
+  overflow-y:scroll;
+  background-color: #798898;
+  overflow-x:hidden;
 }
 
+.results-list li:hover {
+  left:20px;
+}
+
+.client-profile h3 {
+  margin:10px;
+  text-align: center;
+}
+
+.client-details {
+  margin:5px;
+}
+
+.client-options {
+  text-align: right;
+  font-size: small;
+  margin-right: 20px;
+}
+
+.client-profile li {
+  background-color: inherit;
+  font-size: small;
+  border:none;
+  margin:0;
+  color:black;
+}
 .search-errorfield {
   margin:10px;
   padding: 5px;

@@ -11,8 +11,10 @@ function SearchUsers(props) {
         <form onSubmit={(e)=>{props.handleSubmit(e,'searchUsers')}}>
           <div className="search-category">
             <span>Gender: </span>
-            <label><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
-            <label><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+            <span className="spanpush">
+              <label><input name="sex" value="0" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[0] : false} onChange={props.handleInputChange} />Male</label>
+              <label><input name="sex" value="1" type="checkbox" checked={props.searchQuery ? props.searchQuery.sex[1] : false} onChange={props.handleInputChange} />Female</label>
+            </span>
           </div>
           <div className="search-category">
             <span>Height:</span>
@@ -54,7 +56,7 @@ function SearchUsers(props) {
             <span>Zip Code:</span>
             <label><input name="zip" value={props.searchQuery ? props.searchQuery.zip : ''} onChange={props.handleInputChange} /></label>
           </div>
-          <div className={props.preSearchLoaded ? '' : 'nodisplay'}>
+          <div className={props.preSearchLoaded ? 'preview-count' : 'preview-count nodisplay'}>
             Number of results for this search: {props.preSearchCount}
           </div>
           <div className="buttondiv">

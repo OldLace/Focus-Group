@@ -10,7 +10,6 @@ function bizDetails(props) {
   return (
     <div className="biz-form">
       <h1>Update your account info</h1>
-      <button className={props.editDetails ? '' : 'nodisplay'} onClick={props.showEdit}>X</button>
       <form onSubmit={(e)=>{props.handleSubmit(e, destination)}}>
         <input
           type="text"
@@ -62,6 +61,7 @@ function bizDetails(props) {
           placeholder="Business Description"
         />
         <input type="submit" value="submit" />
+        <button className={props.editDetails ? 'backBtn' : 'nodisplay backBtn'} onClick={props.showEdit}>Back</button>
       </form>
     </div>
   )
